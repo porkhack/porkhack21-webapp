@@ -7,10 +7,30 @@ import moment from 'moment';
 
 
 function Asn(props) {
-  const asn = props.asn;
   const {state, actions} = useOvermind()
+  const asn = state.pork.asns[props.id];
   let shipdate = moment(asn.shipdate).format('MM/DD/YYYY');
   let status = asn.status.split(' ').map(word => word[0].toUpperCase()+word.substring(1)).join(' ');
+  let haulerCerts = Object.values(asn.hauler && asn.hauler.certifications || {}).map(c =>
+    <div style={{color: '#00ff00'}}>
+      <Icon color="green" name='certificate'/>
+      {c.certtype}
+    </div>
+  )
+
+  let processorCerts = Object.values(asn.processor && asn.processor.certifications || {}).map(c =>
+    <div key={'proccert'+c.certificationid} style={{color: '#00ff00'}}>
+      <Icon color="green" name='certificate'/>
+      {c.certtype}
+    </div>
+  )
+
+  let farmerCerts = Object.values(asn.farmer && asn.farmer.certifications || {}).map(c =>
+    <div key={'farmercert'+c.certificationid} style={{color: '#00ff00'}}>
+      <Icon color="green" name='certificate'/>
+      {c.certtype}
+    </div>
+  )
 
   return (
     <div css={{
@@ -18,9 +38,27 @@ function Asn(props) {
       display: 'flex',
       flexDirection: "row",
     }}>
-      {asn.location.name}
+      {`ASN ${props.id}`}
+      <div>
+        Hauler: {asn.hauler.name}
+        {haulerCerts}
+      </div>
+      <div>
+        Processor: {asn.processor.name}
+        {processorCerts}
+      </div>
+      <div>
+        Farmer: {asn.farmer.name}
+        {farmerCerts}
+      </div>
+
       <div>Ship Date: {shipdate}</div>
-      <div>Status: {status}</div>
+      <div >
+        Status:
+        <div style={{color: status==='Arrived' ? '#00ff00' : '#ff0000'}}>
+          {status}
+        </div>
+      </div>
       <Button icon onClick={actions.pork.editAsn}>
         <Icon name='edit' />
       </Button>
@@ -36,7 +74,6 @@ function AsnList() {
   const {state, actions} = useOvermind()
   const myActions = actions.view.AsnList
   const asns = state.pork.asns; 
-  console.log('asns', asns)
   return (
     <div css={{
       flex: 1,
@@ -48,8 +85,8 @@ function AsnList() {
       Add New ASN
     </Button>
 
-    {Object.values(asns || {}).map(item => 
-      <Asn asn={item} />
+    {Object.keys(asns || {}).map(key => 
+      <Asn id={key} key={key} />
     )}
     </div>
   );

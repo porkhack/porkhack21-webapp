@@ -1,7 +1,9 @@
 import { jsx } from '@emotion/react'
 
-import { Modal, Button, Icon } from 'semantic-ui-react'
+import { Modal, Divider, Button, Icon, Checkbox, Form } from 'semantic-ui-react'
 import {useOvermind} from '../overmind'
+import schema from './asnSchema'
+//import Form from '@rjsf/semantic-ui'
 
 //import Header from './Header';
 //import List from './List';
@@ -9,6 +11,16 @@ import {useOvermind} from '../overmind'
 
 function EditAsnModal(props) {
   const { actions, state } = useOvermind();
+
+  let things = ['haulers', 'processors', 'locations'];
+  let options = {};
+  things.forEach(key => {
+    options[key] = Object.values(state.pork[key]).map(item => ({
+      key: item.name,
+      text: item.name,
+      value: item,
+    }))
+  })
 
   return (
     <Modal open={state.view.editAsn} onClose={actions.view.editAsnClosed}>
@@ -18,7 +30,30 @@ function EditAsnModal(props) {
         </Button>
 
         <div css={{minHeight: 300, display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-    EDITING ASN HERE
+          <Form>
+            <Form.Select
+              fluid
+              label='Ship From Location'
+              options={options.locations}
+              placeholder='Ship From Location'
+            />
+            <Form.Select
+              fluid
+              label='Hauler'
+              options={options.haulers}
+              placeholder='Hauler'
+            />
+            <Form.Select
+              fluid
+              label='Processor'
+              options={options.processors}
+              placeholder='Processor'
+            />
+          <Divider>Load Info</Divider>
+          <Form.Input fluid label='Head Count'/>
+          <Form.Input fluid label='Load Weight (lbs)'/>
+          <Button type='submit'>Submit</Button>
+        </Form>
         </div>
         <Button onClick={actions.pork.doneClicked}>
           Done
