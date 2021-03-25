@@ -3,6 +3,7 @@ import { useOvermind } from "../overmind";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 //import Typography from "@material-ui/core/Typography";
 import Login from './Login'
+import AsnList from './AsnList'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,7 +23,7 @@ const App = () => {
 
   return (
     <div className={classes.root}>
-      Hello!
+      <AsnList/>
     </div>
   );
 };

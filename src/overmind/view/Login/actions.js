@@ -17,7 +17,7 @@ export default {
     let domain = myState.domain;
     myState.loading = true;
     domain = domain.match(/^http/) ? domain : 'https://'+myState.domain;
-//    await actions.OADAManager.login({domain, token});
+    await actions.OADAManager.login({domain, token});
     myState.loading = false;
     if (state.OADAManager.connected) {
       myState.loggedIn = true;

@@ -7,10 +7,10 @@ export default {
   async connect({actions, state, effects}, {domain, token}) {
     const myState = state.OADAManager;
     const myActions = actions.OADAManager;
-//    if (token) myState.token = token;
+    if (token) myState.token = token;
 //    token = await myActions.getToken(domain);
     return actions.oada.connect({
-//      token,
+      token,
       domain: domain,
       options: config.OPTIONS,
       cache: false,
