@@ -28,7 +28,7 @@ export async function editAsn({state, actions}) {
   state.view.editAsn = true;
 }
 
-export async function addANewAsn({state, actions}) {
+export async function addAsn({state, actions}) {
   state.pork.newAsn = {};
   state.view.editAsn = true;
   await actions.oada.post({
@@ -54,33 +54,36 @@ export async function editAsnClosed({state, actions}) {
   })
 }
 
-export async function inputChanged({state, actions}, props) {
-  console.log('props', props.evt.target);
+export async function inputChanged({state, actions}, {type, value}) {
+  console.log('props', type, value);
   // Tell it how to transform the result
   let transforms = {
-    count: (value) => ({value, units: 'count'}),
-    weight: (value) => ({value, units: 'lbs'}),
-    hauler: (value) => state.pork.haulers[value.id],
-    processor: (value) => state.pork.processors[value.id],
-    location: (value) => state.pork.locations[value.id],
+    count: (val) => ({value:val, units: 'count'}),
+    weight: (val) => ({value:val, units: 'lbs'}),
+    hauler: (val) => state.pork.haulers[val],
+    processor: (val) => state.pork.processors[val],
+    location: (val) => state.pork.locations[val],
   }
 
   // Compute the transform or just take the value;
-  let result = transforms[props.type] ?
-    transforms[props.type](props.evt.target.value)
-  : props.evt.target.value;
+  let result = transforms[type] ?
+    transforms[type](value)
+  : value;
 
   // Tell it where to put the result
   let mappings = {
     count: '/enroute/head',
-    weight: '/enroute/weight/',
-    haulers: '/hauler',
+    weight: '/enroute/weight',
+    hauler: '/hauler',
     processor: '/processor',
     status: '/status',
     shipdate: '/shipdate',
     location: '/scheduled/shipfromlocation',
   }
 
-  pointer.set(state.pork, mappings[props.type], result);
+  let asn = _.cloneDeep(state.pork.newAsn);
+  console.log(state.pork.newAsn, type, mappings[type], result)
+  pointer.set(asn, mappings[type], result);
+  state.pork.newAsn = asn;
 
 }

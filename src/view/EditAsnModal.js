@@ -44,7 +44,7 @@ function EditAsnModal(props) {
               label="Ship From Location"
               options={options.locations}
               placeholder='Ship From Location'
-              onChange={(evt) => actions.pork.inputChanged({evt, type: 'locations'})}
+              onChange={(evt, {value}) => actions.pork.inputChanged({value, type: 'location'})}
             />
             <Form.Select
               fluid
@@ -52,18 +52,18 @@ function EditAsnModal(props) {
               options={options.haulers}
               placeholder='Hauler'
               value={asn.hauler && asn.hauler.name || ''}
-              onChange={(evt) => actions.pork.inputChanged({evt, type: 'locations'})}
+              onChange={(evt, {value}) => actions.pork.inputChanged({value, type: 'hauler'})}
             />
             <Form.Select
               fluid
               label="Processor"
               options={options.processors}
               placeholder='Processor'
-              onChange={(evt) => actions.pork.inputChanged({evt, type: 'locations'})}
+              onChange={(evt, {value}) => actions.pork.inputChanged({value, type: 'processor'})}
             />
           <Divider>Load Info</Divider>
-          <Form.Input fluid label='Head Count' onChange={(evt) => actions.pork.inputChanged({evt, type:'count'})}/>
-          <Form.Input fluid label='Load Weight (lbs)' onChange={(evt) => actions.pork.inputChanged({evt, type: 'weight'})}/>
+          <Form.Input fluid label='Head Count' onChange={(evt, {value}) => actions.pork.inputChanged({value, type:'count'})}/>
+          <Form.Input fluid label='Load Weight (lbs)' onChange={(evt, {value}) => actions.pork.inputChanged({value, type: 'weight'})}/>
           <Button type='submit'>Submit</Button>
         </Form>
         </div>
