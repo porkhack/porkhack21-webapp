@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { config } from "./overmind";
 import "./index.css";
-import App from "./components/App";
+import App from "./view/App";
 import reportWebVitals from "./reportWebVitals";
 
 export const overmind = createOvermind(config, {
