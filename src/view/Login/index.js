@@ -4,7 +4,7 @@ import { jsx, css } from "@emotion/react";
 import { useOvermind } from "../../overmind";
 import { Input, Button, Form } from "semantic-ui-react";
 
-import { ReactComponent as Logo } from "./farmer.svg";
+import { ReactComponent as Farmer } from "../../svg/farmer.svg";
 
 function Login() {
   const { state, actions } = useOvermind();
@@ -35,14 +35,7 @@ function Login() {
           border-radius: 5px;
         `}
       >
-        <img
-          css={{
-            height: 300,
-          }}
-          src={`imgs/logo2.svg`}
-          alt={"logo"}
-        />
-        <Logo />
+        <Farmer />
         <Form
           css={css`
             display: flex;
