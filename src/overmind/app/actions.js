@@ -1,5 +1,1 @@
-import _ from 'lodash'
-export default {
-  onInitialize({state, actions}) {
-  }
-}
+export function onInitialize({ state, actions }) {}

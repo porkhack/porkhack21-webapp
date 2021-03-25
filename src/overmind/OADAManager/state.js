@@ -1,11 +1,11 @@
-import _ from 'lodash';
-export default {
+import _ from "lodash";
+export const state = {
   connected: false,
   //token: 'def',
   currentConnection: null,
   domain: null,
-  user: ({currentConnection}, state) => {
+  user: ({ currentConnection }, state) => {
     if (!currentConnection) return null;
-    return _.get(state, 'oada.localhost.users.me');
-  }
-}
+    return _.get(state, "oada.localhost.users.me");
+  },
+};

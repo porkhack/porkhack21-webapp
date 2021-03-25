@@ -1,13 +1,11 @@
-
 //import { JSONSchema8 as Schema } from 'jsonschema8';
 
 module.exports = {
-  $id: 'https://formats.openag.io/trellisfw/asn/porkhack/v1.schema.json',
-  $schema: 'http://json-schema.org/draft-07/schema#',
-  description: 'Proposed ASN structure for Pork Hack 21',
+  $id: "https://formats.openag.io/trellisfw/asn/porkhack/v1.schema.json",
+  $schema: "http://json-schema.org/draft-07/schema#",
+  description: "Proposed ASN structure for Pork Hack 21",
   additionalProperties: true,
   definitions: {
-
     //--------------------------------
     // Time:
     day: {
@@ -21,18 +19,18 @@ module.exports = {
     //--------------------------------
     // Locations:
     address: {
-      type: 'string',
+      type: "string",
       // Todo: better definition
     },
     latlon: {
-      type: 'object',
+      type: "object",
       properties: {
         lat: { type: "number" },
         lon: { type: "number" },
       },
     },
     premiseid: {
-      type: "string"
+      type: "string",
     },
 
     location: {
@@ -40,8 +38,8 @@ module.exports = {
         { $ref: "#/definitions/address" },
         { $ref: "#/definitions/latlon" },
         { $ref: "#/definitions/premiseid" },
-        { 
-          type: 'object',
+        {
+          type: "object",
           properties: {
             name: {
               type: "string",
@@ -51,48 +49,48 @@ module.exports = {
       ],
     },
 
-
     //--------------------------------
     // Stats:
     head: {
       type: "object",
       properties: {
         value: { type: "number" },
-        units: { type: "string", enum: [ "count" ] },
-      }
+        units: { type: "string", enum: ["count"] },
+      },
     },
     weight: {
-      type: 'object',
+      type: "object",
       properties: {
         value: { type: "number" },
-        units: { type : "string", enum: [ "lbs", "kg" ] },
-      }
+        units: { type: "string", enum: ["lbs", "kg"] },
+      },
     },
 
     //--------------------------------
     // Certifications:
-    pac: { // private automated certification (AGAPECert)
-      type: 'object',
+    pac: {
+      // private automated certification (AGAPECert)
+      type: "object",
       properties: {
-        pacid: { type: 'string' },
-        result: { 
-          type: 'string',
-          enum: [ 'valid', 'invalid' ],
+        pacid: { type: "string" },
+        result: {
+          type: "string",
+          enum: ["valid", "invalid"],
         },
         signatures: {
-          type: 'array',
+          type: "array",
           items: {
-            type: 'string' // each signature is a JWT
-          }
-        }
-      }
+            type: "string", // each signature is a JWT
+          },
+        },
+      },
     },
     certification: {
-      type: 'object',
+      type: "object",
       properties: {
         certtype: {
-          type: 'string',
-          enum: [ 'TQA', 'PQA-PLUS' ],
+          type: "string",
+          enum: ["TQA", "PQA-PLUS"],
         },
         certificationid: { type: "string" },
         expiration: { $ref: "#/definitions/day" },
@@ -101,39 +99,38 @@ module.exports = {
     certifications: {
       type: "object",
       additionalProperties: { $ref: "#/definitions/certification" },
-    }
-
+    },
   },
   properties: {
     status: {
-      type: 'string',
+      type: "string",
       // If you need to reschedule a load, cancel this ASN and make a new one.  That is why there is no "delayed" status.
-      enum: [ "scheduled", "canceled", "enroute", "arrived", "received" ],
+      enum: ["scheduled", "canceled", "enroute", "arrived", "received"],
     },
     shipdate: { $ref: "#/definitions/day" },
     scheduled: {
-      type: 'object',
+      type: "object",
       properties: {
         shipfromlocation: { $ref: "#/definitions/location" },
       },
     },
     enroute: {
-      type: 'object',
+      type: "object",
       properties: {
         head: { $ref: "#/definitions/head" },
         weight: { $ref: "#/definitions/weight" },
-        departuretime: { $ref: '#/definitions/timestamp' },
-        arrivaltime: { $ref: '#/definitions/timestamp' },
+        departuretime: { $ref: "#/definitions/timestamp" },
+        arrivaltime: { $ref: "#/definitions/timestamp" },
         locations: {
           type: "object",
           // objects w/ lat, lon, time:
           additionalProperties: {
             allOf: [
               { $ref: "#/definitions/latlon" },
-              { 
-                type: 'object',
+              {
+                type: "object",
                 properties: {
-                  time: { $ref: '#/definitions/timestamp' }
+                  time: { $ref: "#/definitions/timestamp" },
                 },
               },
             ],
@@ -142,52 +139,52 @@ module.exports = {
       },
     },
     arrived: {
-      type: 'object',
+      type: "object",
       properties: {
-        arrivaltime: { $ref: '#/definitions/timestamp' },
-        head: { $ref: '#/definitions/head' },
-        weight: { $ref: '#/definitions/weight' },
-      }
+        arrivaltime: { $ref: "#/definitions/timestamp" },
+        head: { $ref: "#/definitions/head" },
+        weight: { $ref: "#/definitions/weight" },
+      },
     },
     farmer: {
-      type: 'object',
+      type: "object",
       properties: {
-        name: { type: 'string' },
-        certifications: { 
-          type: 'object',
+        name: { type: "string" },
+        certifications: {
+          type: "object",
           additionalProperties: { $ref: "#/definitions/certification" },
         },
         // Any internal ID's the farmer's system uses to identify processor or farmer:
-        processorid: { type: 'string' },
-        haulerid: { type: 'string' },
-      }
+        processorid: { type: "string" },
+        haulerid: { type: "string" },
+      },
     },
     hauler: {
-      type: 'object',
+      type: "object",
       properties: {
-        name: { type: 'string' },
-        certifications: { 
-          type: 'object',
+        name: { type: "string" },
+        certifications: {
+          type: "object",
           additionalProperties: { $ref: "#/definitions/certification" },
         },
         // Any internal ID's the farmer's system uses to identify processor or hauler:
-        farmerid: { type: 'string' },
-        haulerid: { type: 'string' },
-      }
+        farmerid: { type: "string" },
+        haulerid: { type: "string" },
+      },
     },
     processor: {
-      type: 'object',
+      type: "object",
       properties: {
-        name: { type: 'string' },
-        certifications: { 
-          type: 'object',
+        name: { type: "string" },
+        certifications: {
+          type: "object",
           additionalProperties: { $ref: "#/definitions/certification" },
         },
         // Any internal ID's the farmer's system uses to identify farmer or hauler:
-        farmerid: { type: 'string' },
-        haulerid: { type: 'string' },
-      }
+        farmerid: { type: "string" },
+        haulerid: { type: "string" },
+      },
     },
   },
-  required: [ 'shipdate', 'status' ],
+  required: ["shipdate", "status"],
 };

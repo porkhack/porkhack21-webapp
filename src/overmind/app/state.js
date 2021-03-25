@@ -1,3 +1,1 @@
-import _ from 'lodash';
-
-export default {}
+export const state = {};

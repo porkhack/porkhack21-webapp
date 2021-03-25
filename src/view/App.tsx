@@ -1,11 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { useOvermind } from "../overmind";
 //import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 //import Typography from "@material-ui/core/Typography";
-import Login from './Login'
-import AsnList from './AsnList'
-import TopBar from './TopBar'
-import EditAsnModal from './EditAsnModal'
+import Login from "./Login";
+import AsnList from "./AsnList";
+import TopBar from "./TopBar";
+import EditAsnModal from "./EditAsnModal";
 /*
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -17,18 +17,18 @@ const useStyles = makeStyles((theme: Theme) =>
 */
 
 const App = () => {
-  const { state, actions } = useOvermind();
-//  const classes = useStyles();
+  const { state } = useOvermind();
+  //  const classes = useStyles();
 
   if (!state.view.Login.loggedIn) {
-    return <Login />
+    return <Login />;
   }
 
   return (
     <div>
       <TopBar />
-      <AsnList/>
-      <EditAsnModal/>
+      <AsnList />
+      <EditAsnModal />
     </div>
   );
 };
