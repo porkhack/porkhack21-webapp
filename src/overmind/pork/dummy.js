@@ -52,23 +52,21 @@ module.exports = {
           result: "valid",
         },
       },
+      "902u390r2j3io3": {
+        certtype: "TQA",
+        expiration: "2022-04-25",
+        certificationid: "2890183410942",
+        pac: {
+          pacid: "ijd20fijedlkfj",
+          result: "valid",
+        },
+      },
     },
     processorid: "internal_hauler_id_1",
     farmerid: "internal_hauler_id_2",
   },
   processor: {
     name: "Processor, Inc.",
-    certifications: {
-      "certification-random-string": {
-        certtype: "TQA",
-        expiration: "2022-04-25",
-        certificationid: "444444444444",
-        pac: {
-          pacid: "pacid",
-          result: "valid",
-        },
-      },
-    },
     farmerid: "internal_processor_id_1",
     haulerid: "internal_processor_id_2",
   },

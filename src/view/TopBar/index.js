@@ -1,34 +1,41 @@
 /** @jsx jsx */ /** @jsxRuntime classic */
-import { jsx } from "@emotion/react";
+import { jsx, css } from "@emotion/react";
 
 import { Dropdown } from "semantic-ui-react";
 import { useOvermind } from "../../overmind";
 
+import { ReactComponent as Farmer } from "../../svg/farmer.svg";
+
 function TopBar() {
   const { actions, state } = useOvermind();
-  //  const skin = state.app.skin;
+
   return (
     <div
-      css={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        backgroundColor: "#fff",
-        height: "100px",
-        borderBottom: "1px solid #979797",
-      }}
+      css={css`
+        display: grid;
+        grid-template-columns: 0.25fr 1fr 0.25fr;
+        justify-items: center;
+        align-items: center;
+        background: var(--header-background);
+        color: var(--header-color);
+      `}
     >
-      <svg
-        css={{
-          height: "50px",
-          paddingLeft: "20px",
-        }}
-        src={"skins/farmer.svg"}
-        alt="logo"
+      <Farmer
+        css={css`
+          width: 3em;
+          max-width: 50px;
+          padding-left: 10px;
+          justify-self: left;
+        `}
       />
-      <div css={{ marginRight: 50 }}>
-        <Dropdown text={state.view.Login.me}>
+      <h1>ASN Manager</h1>
+      <div
+        css={css`
+          margin-right: 50px;
+          justify-self: right;
+        `}
+      >
+        <Dropdown text={state.view.Login.me} direction="left">
           <Dropdown.Menu>
             <Dropdown.Item
               icon="power"
