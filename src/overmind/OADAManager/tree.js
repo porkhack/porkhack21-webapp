@@ -1,4 +1,4 @@
-export default {
+export const tree = {
   bookmarks: {
     _type: "application/vnd.oada.bookmarks.1+json",
     _rev: 0,
@@ -11,15 +11,15 @@ export default {
           _rev: 0,
           farm: {
             _type: "application/vnd.oada.farm.1+json",
-          }
-        }
+          },
+        },
       },
       farms: {
         "*": {
           _type: "application/vnd.oada.farm.1+json",
-          _rev: 0
-        }
-      }
+          _rev: 0,
+        },
+      },
     },
     seasons: {
       _type: "application/vnd.oada.seasons.1+json",
@@ -33,24 +33,24 @@ export default {
             _rev: 0,
             operations: {
               "*": {
-                _type: "application/vnd.oada.operation.1+json"
-              }
-            }
-          }
+                _type: "application/vnd.oada.operation.1+json",
+              },
+            },
+          },
         },
         farms: {
           "*": {
             _type: "application/vnd.oada.farm.1+json",
-            _rev: 0
-          }
+            _rev: 0,
+          },
         },
         operations: {
           "*": {
             _type: "application/vnd.oada.operation.1+json",
-            _rev: 0
-          }
-        }
-      }
-    }
-  }
+            _rev: 0,
+          },
+        },
+      },
+    },
+  },
 };

@@ -1,4 +1,5 @@
-import config from '../../../config'
-export default {
-  domain: config.oadaDomain
-}
+import config from "../../../config";
+
+export const state = {
+  domain: config.oadaDomain,
+};

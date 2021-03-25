@@ -14,7 +14,7 @@ module.exports = {
     head: { value: 200, units: "count" },
     weight: { value: 49000, units: "lbs" },
     locations: {
-      '208eifojfe': { time: 123984934.43, lat: 50.1984, lon: -81.83495 },
+      "208eifojfe": { time: 123984934.43, lat: 50.1984, lon: -81.83495 },
     },
     departuretime: 9023029431.0394,
     arrivaltime: 1893083093.439,
@@ -26,15 +26,14 @@ module.exports = {
     weight: { value: 48500, units: "lbs" },
   },
 
-
   farmer: {
     name: "Ault Farms, Inc.",
     certifications: {
       "02jkfjf0i2ofk": {
         certtype: "PQA-PLUS",
         expiration: "2022-04-20",
-        certificationid: "9381923834"
-      }
+        certificationid: "9381923834",
+      },
     },
     processorid: "internal_farmerid_for_processor",
     haulerid: "internal_farmrerid_for_hauler",
@@ -50,9 +49,9 @@ module.exports = {
         certificationid: "2890183410942",
         pac: {
           pacid: "ijd20fijedlkfj",
-          result: "valid"
-        }
-      }
+          result: "valid",
+        },
+      },
     },
     processorid: "internal_hauler_id_1",
     farmerid: "internal_hauler_id_2",
@@ -66,11 +65,11 @@ module.exports = {
         certificationid: "444444444444",
         pac: {
           pacid: "pacid",
-          result: "valid"
-        }
-      }
+          result: "valid",
+        },
+      },
     },
     farmerid: "internal_processor_id_1",
     haulerid: "internal_processor_id_2",
-  }
-}
+  },
+};

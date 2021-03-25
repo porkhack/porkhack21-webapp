@@ -1,6 +1,10 @@
-import { jsx, css } from '@emotion/react'
-import {useOvermind} from '../../overmind'
-import { Input, Button, Form } from 'semantic-ui-react'
+/** @jsx jsx */ /** @jsxRuntime classic */
+import { jsx, css } from "@emotion/react";
+
+import { useOvermind } from "../../overmind";
+import { Input, Button, Form } from "semantic-ui-react";
+
+import { ReactComponent as Logo } from "./farmer.svg";
 
 function Login() {
   const { state, actions } = useOvermind();
@@ -8,56 +12,80 @@ function Login() {
   const myActions = actions.view.Login;
 
   return (
-    <div css={css`
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: url(imgs/login-background.jpg) no-repeat center center fixed;
-      background-size: cover;
-    `}>
-      <div css={css`
-        width: 400px;
+    <div
+      css={css`
+        height: 100vh;
+        width: 100vw;
         display: flex;
         flex-direction: column;
-        background: #fff;
-        padding: 15px;
-        padding-top: 7px;
-        border-radius: 5px;
-      `}>
-        <img css={{
-          height: 300
-        }} src={`imgs/logo2.svg`} alt={'logo'} />
-        <Form css={css`
+        justify-content: center;
+        align-items: center;
+        background: url(imgs/login-background.jpg) no-repeat center center fixed;
+        background-size: cover;
+      `}
+    >
+      <div
+        css={css`
+          width: 400px;
           display: flex;
           flex-direction: column;
-        `} onSubmit={myActions.login}>
-          <Input placeholder='OADA Domain...' value={myState.domain} onChange={(evt, data) => myActions.domainChange(data)} />
+          background: #fff;
+          padding: 15px;
+          padding-top: 7px;
+          border-radius: 5px;
+        `}
+      >
+        <img
+          css={{
+            height: 300,
+          }}
+          src={`imgs/logo2.svg`}
+          alt={"logo"}
+        />
+        <Logo />
+        <Form
+          css={css`
+            display: flex;
+            flex-direction: column;
+          `}
+          onSubmit={myActions.login}
+        >
+          <Input
+            placeholder="OADA Domain..."
+            value={myState.domain}
+            onChange={(evt, data) => myActions.domainChange(data)}
+          />
           <Button
-            style={{marginTop: 7}} primary
+            style={{ marginTop: 7 }}
+            primary
             loading={myState.loading}
-            disabled={myState.loading}>
+            disabled={myState.loading}
+          >
             Connect to Your OADA Cloud
           </Button>
           <Button
-            style={{marginTop: 7}}
+            style={{ marginTop: 7 }}
             onClick={myActions.viewDemo}
-            disabled={myState.loading}>
+            disabled={myState.loading}
+          >
             View Demo
           </Button>
         </Form>
       </div>
-      <a css={css`
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 1.2em;
-        color: #FFFFFF;
-        cursor: pointer;
-      `} onClick={myActions.logout}
-      >Logout</a>
+      <button
+        css={css`
+          display: none;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          font-size: 1.2em;
+          color: #ffffff;
+          cursor: pointer;
+        `}
+        onClick={myActions.logout}
+      >
+        Logout
+      </button>
     </div>
   );
 }

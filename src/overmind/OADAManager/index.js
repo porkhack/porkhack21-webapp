@@ -1,5 +1,2 @@
-import _state from './state'
-import _actions from './actions'
-
-export const state = _state;
-export const actions = _actions;
+export { state } from "./state";
+export * as actions from "./actions";
