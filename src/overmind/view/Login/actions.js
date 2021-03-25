@@ -1,7 +1,9 @@
 export default {
   onInitialize({ state, actions }) {
-    const domain = window.localStorage['oada:domain'];
-    const token = window.localStorage['oada:token'];
+    let domain = window.localStorage['oada:domain'];
+    let token = window.localStorage['oada:token'];
+    domain = "https://farmer.porkhack1.openag.io"
+    token = "b24b7832c75e464b98cb5e725fbaa835"
     if (domain) {
       state.view.Login.domain = domain
     }
@@ -15,7 +17,7 @@ export default {
     let domain = myState.domain;
     myState.loading = true;
     domain = domain.match(/^http/) ? domain : 'https://'+myState.domain;
-    await actions.OADAManager.login({domain, token});
+//    await actions.OADAManager.login({domain, token});
     myState.loading = false;
     if (state.OADAManager.connected) {
       myState.loggedIn = true;

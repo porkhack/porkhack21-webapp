@@ -101,8 +101,6 @@ export default {
     const {error} = await myActions.connect({domain, token});
     if (!error) {
       await myActions.getUserInfo();
-      await actions.soils.initialize();
-      await actions.view.Map.zoomBounds();
     }
   },
 }
