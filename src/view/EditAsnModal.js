@@ -11,6 +11,7 @@ import schema from './asnSchema'
 
 function EditAsnModal(props) {
   const { actions, state } = useOvermind();
+  let asn = state.pork.newAsn || {};
 
   let things = ['haulers', 'processors', 'locations'];
   let options = {};
@@ -18,7 +19,7 @@ function EditAsnModal(props) {
     options[key] = Object.values(state.pork[key]).map(item => ({
       key: item.name,
       text: item.name,
-      value: item,
+      value: item.id,
     }))
   })
 
@@ -36,22 +37,26 @@ function EditAsnModal(props) {
               label='Ship From Location'
               options={options.locations}
               placeholder='Ship From Location'
+              onChange={(evt) => actions.pork.inputChange({evt, type: 'locations'})}
             />
             <Form.Select
               fluid
               label='Hauler'
               options={options.haulers}
               placeholder='Hauler'
+              value={asn.hauler && asn.hauler.name || ''}
+              onChange={(evt) => actions.pork.inputChange({evt, type: 'locations'})}
             />
             <Form.Select
               fluid
               label='Processor'
               options={options.processors}
               placeholder='Processor'
+              onChange={(evt) => actions.pork.inputChange({evt, type: 'locations'})}
             />
           <Divider>Load Info</Divider>
-          <Form.Input fluid label='Head Count'/>
-          <Form.Input fluid label='Load Weight (lbs)'/>
+          <Form.Input fluid label='Head Count' inputChange={(evt) => actions.pork.inputChanged({evt, type:'count'})}/>
+          <Form.Input fluid label='Load Weight (lbs)' inputChange={(evt) => actions.pork.inputChanged({evt, type: 'weight'})}/>
           <Button type='submit'>Submit</Button>
         </Form>
         </div>
