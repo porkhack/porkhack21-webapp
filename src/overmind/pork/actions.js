@@ -130,7 +130,6 @@ export async function inputChanged({ state, actions }, { type, value }) {
     weight: (val) => ({ value: val, units: "lbs" }),
     departuretime: (val) => val,
     etatime: (val) => val,
-
     acount: (val) => ({ value: val, units: "count" }),
     aweight: (val) => ({ value: val, units: "lbs" }),
     arrivaltime: (val) => val,
@@ -143,10 +142,17 @@ export async function inputChanged({ state, actions }, { type, value }) {
   let mappings = {
     count: "/enroute/head",
     weight: "/enroute/weight",
-    status: "/status"
+    status: "/status",
+    hcerttype: "/hauler/certifications/test/certtype",
+    hcertexp:  "/hauler/certifications/test/expiration",
+    hcertid:  "/hauler/certifications/test/certificationid",
+    pcerttype: "/processor/certifications/test/certtype",
+    pcertexp:  "/processor/certifications/test/expiration",
+    pcertid:  "/processor/certifications/test/certificationid",
   };
 
   let asn = _.cloneDeep(state.pork.newAsn);
+  console.log(mappings[type], type, value, result);
   pointer.set(asn, mappings[type], result);
   state.pork.newAsn = asn;
 }

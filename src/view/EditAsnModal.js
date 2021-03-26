@@ -19,6 +19,18 @@ function EditAsnModal(props) {
     }));
   });
   let title = state.pork.selectedAsn === "new" ? "Add New ASN" : "Edit ASN";
+  let certs = [
+    {
+      key: 'TQA',
+      text: 'TQA',
+      value: 'TQA',
+    },{
+      key: 'PQA - PLUS',
+      text: 'PQA - PLUS',
+      value: 'PQA - PLUS',
+    }
+  ];
+
   let statuses = [
     {
       key: 'scheduled',
@@ -179,6 +191,60 @@ function EditAsnModal(props) {
                 Now
               </Button>
             </div>
+            <Divider>Certifications - Hauler</Divider>
+            <Form.Select
+              fluid
+              label="Certification Type"
+              options={certs}
+              value={asn?.hauler?.certifications?.test?.certtype}
+              placeholder="Certification Type"
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({value, type: 'hcerttype'})
+              }
+            />
+            <Form.Input
+              fluid
+              label="Certification ID"
+              value={asn?.hauler?.certifications?.test?.certificationid}
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({ value, type: "hcertid" })
+              }
+            />
+            <Form.Input
+              fluid
+              label="Certification Expiration Date"
+              value={asn?.hauler?.certifications?.test?.expiration}
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({ value, type: "hcertexp" })
+              }
+            />
+            <Divider>Certifications - Processor</Divider>
+            <Form.Select
+              fluid
+              label="Certification Type"
+              options={certs}
+              value={asn?.hauler?.certifications?.test?.certtype}
+              placeholder="Certification Type"
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({value, type: 'pcerttype'})
+              }
+            />
+            <Form.Input
+              fluid
+              label="Certification ID"
+              value={asn?.hauler?.certifications?.test?.certificationid}
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({ value, type: "pcertid" })
+              }
+            />
+            <Form.Input
+              fluid
+              label="Certification Expiration Date"
+              value={asn?.hauler?.certifications?.test?.expiration}
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({ value, type: "pcertexp" })
+              }
+            />
 
 
           </Form>

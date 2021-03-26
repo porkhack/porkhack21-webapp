@@ -20,7 +20,7 @@ function Login() {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background: url(imgs/login-background.jpg) no-repeat center center fixed;
+        background: url(imgs/login-background.png) no-repeat center center fixed;
         background-size: cover;
       `}
     >
