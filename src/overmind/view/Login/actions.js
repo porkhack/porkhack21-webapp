@@ -42,3 +42,4 @@ export function viewDemo({ state }, data) {
   const myState = state.view.Login;
   myState.loggedIn = true;
 }
+
