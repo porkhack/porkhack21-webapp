@@ -33,18 +33,27 @@ function TopBar() {
         css={css`
           margin-right: 50px;
           justify-self: right;
+          min-width: 100px;
+          min-height: 30px;
+          font-size: 1.6em;
+          text-decoration: underline;
         `}
+        onClick={actions.view.TopBar.toggleUser}
       >
+      {state.view.Login.me ? state.view.Login.me : 'Frank Farmer' }
+    {/*
+      <Dropdown text={state.view.Login.me} direction="left">
         <Dropdown text={state.view.Login.me} direction="left">
           <Dropdown.Menu>
             <Dropdown.Item
               icon="power"
-              text="Logout"
+              text={state.view.Login.me}
               value="logout"
-              onClick={actions.view.TopBar.logout}
+              onClick={actions.view.TopBar.toggleUser}
             />
           </Dropdown.Menu>
         </Dropdown>
+    */}
       </div>
     </div>
   );
