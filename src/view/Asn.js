@@ -18,6 +18,20 @@ export function Asn(props) {
     .join(" ");
   let shipfrom = asn.scheduled?.shipfromlocation;
 
+  const displayHead = () => {
+    const redhead = asn.enroute && asn.arrived && asn.enroute.head && asn.arrived.head && asn.enroute.head != asn.arrived.head ? 'color: red;' : '';
+    if (!asn.arrived && !asn.enroute) return '';
+    return <div css={css`${redhead}`}>
+      { !(asn.enroute && asn.enroute.head) ? '' :
+        `Head Shipped: ${asn.enroute.head.value}` 
+      }
+      <br/>
+      { !(asn.arrived  && asn.arrived.head) ? '' :
+        `Head Received: ${asn.arrived.head.value}` 
+      }
+    </div>
+  }
+
   return (
     <div
       css={css`
@@ -102,6 +116,7 @@ export function Asn(props) {
               <div>{shipfrom?.name || "Unknown"}</div>
               <div>{shipfrom?.address || ""}</div>
             </div>
+            {displayHead()}
           </div>
         </div>
       </div>
