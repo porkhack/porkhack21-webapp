@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/porkhack21-webapp/static/css/main.f2b4e3e6.chunk.css",
-    "main.js": "/porkhack21-webapp/static/js/main.e8c3bef6.chunk.js",
-    "main.js.map": "/porkhack21-webapp/static/js/main.e8c3bef6.chunk.js.map",
+    "main.js": "/porkhack21-webapp/static/js/main.f73a66e7.chunk.js",
+    "main.js.map": "/porkhack21-webapp/static/js/main.f73a66e7.chunk.js.map",
     "runtime-main.js": "/porkhack21-webapp/static/js/runtime-main.6bec8aa3.js",
     "runtime-main.js.map": "/porkhack21-webapp/static/js/runtime-main.6bec8aa3.js.map",
     "static/js/2.bd4e6700.chunk.js": "/porkhack21-webapp/static/js/2.bd4e6700.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.6bec8aa3.js",
     "static/js/2.bd4e6700.chunk.js",
     "static/css/main.f2b4e3e6.chunk.css",
-    "static/js/main.e8c3bef6.chunk.js"
+    "static/js/main.f73a66e7.chunk.js"
   ]
 }
