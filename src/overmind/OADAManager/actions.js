@@ -15,8 +15,8 @@ export async function connect({ actions, state, effects }, { domain, token }) {
     .then((response) => {
       if (!response.error) {
         myState.currentConnection = response.connectionId;
-//        myState.token = response.token;
-        myState.token = config.TOKEN;
+        myState.token = response.token;
+//        myState.token = config.TOKEN;
         myState.connected = true;
         //Unselect local opeation
       }
