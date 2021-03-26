@@ -3,18 +3,34 @@ import _ from 'lodash';
 import trees from '@pork/trees'
 import dummy from './dummy'
 
-console.log(trees);
-
 export async function initialize({ state, actions }, props) {
+  console.log(actions.oada);
   await actions.oada.get({
     path: "/bookmarks/trellisfw/asns",
     tree: trees.asn,
+    watch: {actions: [actions.pork.mapAsns]},
   });
+  actions.pork.mapAsns();
+
   await actions.oada.get({
     path: "/bookmarks/trellisfw/trading-partners",
-    tree: trees['trading-partners'],
+    tree: trees['trading-partner'],
   });
   actions.pork.sortTradingPartners();
+}
+
+export function mapAsns({state, actions}) {
+  console.log('calling mapasns');
+  let conn = state.oada.defaultConn;
+  let asns = state.oada[conn].bookmarks.trellisfw["asns"];
+
+  Object.keys(asns['day-index']).forEach(date => {
+    if (date.charAt(0) === '_') return
+    Object.keys(asns['day-index'][date]).forEach(key => {
+      if (key.charAt(0) === '_') return
+      state.pork.asns[key] = _.cloneDeep(asns['day-index'][date][key]);
+    })
+  })
 }
 
 export function sortTradingPartners({state, actions}) {
@@ -91,7 +107,6 @@ export async function inputChanged({state, actions}, {type, value}) {
   }
 
   let asn = _.cloneDeep(state.pork.newAsn);
-  console.log(state.pork.newAsn, type, mappings[type], result)
   pointer.set(asn, mappings[type], result);
   state.pork.newAsn = asn;
 }

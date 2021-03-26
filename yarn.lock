@@ -1751,10 +1751,10 @@
     p-queue "^6.4.0"
     ws "^7.2.3"
 
-"@oada/oada-cache-overmind@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@oada/oada-cache-overmind/-/oada-cache-overmind-1.0.0.tgz#061e8fbad34742580617a16267db4d7da44ea8ef"
-  integrity sha512-1kOcsO+pOjZueu1KwizSK7lOpuMFbmAsdWr1fJDxeePtPU9589n4nhxb8PN89NFe0IxC77c/RK2VrUnq9Fsy0Q==
+"@oada/oada-cache-overmind@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@oada/oada-cache-overmind/-/oada-cache-overmind-1.0.2.tgz#337d2093767958447db16e9639d2d9994e51f03d"
+  integrity sha512-xmNTN71bqeVvo1FYefHOywnXQMSkGxdtFO0y8L5eOQJE4GygiGRFdhPHUq46NSSFpD4QRiRO5sMZG+Z5Tvuw5g==
   dependencies:
     "@babel/cli" "^7.8.4"
     "@babel/core" "^7.9.0"
@@ -1806,7 +1806,7 @@
     superagent "^6.1.0"
     uuid "^8.3.2"
 
-"@oada/oada-id-client@^1.0.8":
+"@oada/oada-id-client@^1.0.10", "@oada/oada-id-client@^1.0.8":
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/@oada/oada-id-client/-/oada-id-client-1.0.10.tgz#54c27380b69b83765a4604e879ff3873ec4a749d"
   integrity sha512-6DSGqDvcdSN5+S3kmaw2Bqn8Z4CVSFiVzNYCITMl28Uc/JfmWhq4C8sSnXomtRqfvf/jwo0eNhC6JOO8AzV6jg==
