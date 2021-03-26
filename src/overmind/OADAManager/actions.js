@@ -6,7 +6,7 @@ export async function connect({ actions, state, effects }, { domain, token }) {
     //token = await myActions.getToken(domain);
   return actions.oada
     .connect({
-      token,
+//      token,
       domain: domain,
       options: config.OPTIONS,
       cache: false,

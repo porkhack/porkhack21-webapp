@@ -10,11 +10,11 @@ import { AsnDetails } from "./AsnDetails";
 
 export function Asn(props) {
   const { state, actions } = useOvermind();
-  const asn = state.pork.asns[props.id];
+  const asn = state.pork.asns[props.id] || {};
   let shipdate = moment(asn.shipdate).format("MM/DD/YYYY");
-  let status = asn.status
+  let status = asn.status || ""
     .split(" ")
-    .map((word) => word[0].toUpperCase() + word.substring(1))
+    .map((word) => word[0] ? word[0].toUpperCase() + word.substring(1) : '')
     .join(" ");
   let shipfrom = asn.scheduled?.shipfromlocation;
 
@@ -64,8 +64,8 @@ export function Asn(props) {
         `}
       >
         <AsnPlayer type="farmer" player={asn.farmer} />
-        <AsnPlayer type="processor" player={asn.processor} />
-        <AsnPlayer type="hauler" player={asn.hauler} />
+        <AsnPlayer type="hauler" player={asn.processor} />
+        <AsnPlayer type="processor" player={asn.hauler} />
 
         <div
           css={css`

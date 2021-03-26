@@ -1,3 +1,5 @@
+let config = require('../../../config').default;
+
 export function onInitialize({ state, actions }) {
   let domain = window.localStorage["oada:domain"];
   let token = window.localStorage["oada:token"];

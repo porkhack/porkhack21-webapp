@@ -1751,10 +1751,10 @@
     p-queue "^6.4.0"
     ws "^7.2.3"
 
-"@oada/oada-cache-overmind@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@oada/oada-cache-overmind/-/oada-cache-overmind-1.0.0.tgz#061e8fbad34742580617a16267db4d7da44ea8ef"
-  integrity sha512-1kOcsO+pOjZueu1KwizSK7lOpuMFbmAsdWr1fJDxeePtPU9589n4nhxb8PN89NFe0IxC77c/RK2VrUnq9Fsy0Q==
+"@oada/oada-cache-overmind@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@oada/oada-cache-overmind/-/oada-cache-overmind-1.0.3.tgz#347350ea476b93a908a263fb9fe2300087287d37"
+  integrity sha512-HmNHFgPfwVxh3SR0pEU2xq4a2+MpBY75XC3wwuLxVr4cFbo1Iyvg8E/ctujpFnGp3zVfAKnlmpeFwyNndlcdpA==
   dependencies:
     "@babel/cli" "^7.8.4"
     "@babel/core" "^7.9.0"
