@@ -19,8 +19,29 @@ function EditAsnModal(props) {
     }));
   });
   let title = state.pork.selectedAsn === "new" ? "Add New ASN" : "Edit ASN";
-
-  console.log(options);
+  let statuses = [
+    {
+      key: 'scheduled',
+      text: 'Scheduled',
+      value: 'scheduled',
+    },{
+      key: 'Cancelled',
+      text: 'Cancelled',
+      value: 'Cancelled',
+    },{
+      key: 'en route',
+      text: 'En Route',
+      value: 'en route',
+    },{
+      key: 'arrived',
+      text: 'Arrived',
+      value: 'arrived',
+    }, {
+      key: 'received',
+      text: 'Recieved',
+      value: 'received'
+    }
+  ]
 
   return (
     <Modal
@@ -40,6 +61,17 @@ function EditAsnModal(props) {
           }}
         >
           <Form>
+            <Form.Select
+              fluid
+              label="Status"
+              options={statuses}
+              placeholder="Status"
+              value={asn?.status}
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({value, type: "status"})
+              }
+            />
+
             <Form.Select
               fluid
               label="Ship From Location"
@@ -140,9 +172,9 @@ function EditAsnModal(props) {
           </Form>
         </div>
         <div style={{ display: "flex", flexDirection: "row" }}>
-          <Button onClick={actions.pork.doneClicked}>Submit</Button>
-          <div style={{ flexGrow: 1 }} />
           <Button onClick={actions.pork.editAsnClosed}>Close</Button>
+          <div style={{ flexGrow: 1 }} />
+          <Button onClick={actions.pork.doneClicked}>Submit</Button>
         </div>
       </Modal.Content>
     </Modal>
