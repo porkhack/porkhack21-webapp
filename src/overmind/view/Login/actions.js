@@ -3,8 +3,8 @@ let config = require('../../../config').default;
 export function onInitialize({ state, actions }) {
   let domain = window.localStorage["oada:domain"];
   let token = window.localStorage["oada:token"];
-  domain = config.DOMAIN;
-  token = config.TOKEN;
+  domain = "https://farmer.porkhack2.openag.io";
+//  token = "b24b7832c75e464b98cb5e725fbaa835";
   if (domain) {
     state.view.Login.domain = domain;
   }

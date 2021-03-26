@@ -63,8 +63,8 @@ export function Asn(props) {
         `}
       >
         <AsnPlayer type="farmer" player={asn.farmer} />
-        <AsnPlayer type="processor" player={asn.processor} />
-        <AsnPlayer type="hauler" player={asn.hauler} />
+        <AsnPlayer type="hauler" player={asn.processor} />
+        <AsnPlayer type="processor" player={asn.hauler} />
 
         <div
           css={css`
