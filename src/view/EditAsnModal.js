@@ -70,7 +70,7 @@ function EditAsnModal(props) {
                 actions.pork.inputProcessorChanged(value)
               }
             />
-            <Divider>Load Info</Divider>
+            <Divider>Load Info - En Route </Divider>
             <Form.Input
               fluid
               label="Head Count"
@@ -87,6 +87,50 @@ function EditAsnModal(props) {
                 actions.pork.inputChanged({ value, type: "weight" })
               }
             />
+            <Form.Input
+              fluid
+              label="Departure Time"
+              value={asn?.enroute?.departuretime}
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({ value, type: "departuretime" })
+              }
+            />
+            <Form.Input
+              fluid
+              label="ETA"
+              value={asn?.enroute?.arrivaltime}
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({ value, type: "etatime" })
+              }
+            />
+
+            <Divider>Load Info - Arrival</Divider>
+            <Form.Input
+              fluid
+              label="Head Count"
+              value={asn?.arrived?.head?.value}
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({ value, type: "acount" })
+              }
+            />
+            <Form.Input
+              fluid
+              label="Load Weight (lbs)"
+              value={asn?.arrived?.weight?.value}
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({ value, type: "aweight" })
+              }
+            />
+            <Form.Input
+              fluid
+              label="Arrival Time"
+              value={asn?.enroute?.arrival?.time}
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({ value, type: "arrivaltime" })
+              }
+            />
+
+
           </Form>
         </div>
         <div style={{ display: "flex", flexDirection: "row" }}>
