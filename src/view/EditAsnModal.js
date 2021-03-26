@@ -274,7 +274,7 @@ function EditAsnModal(props) {
               fluid
               label="Certification Type"
               options={certs}
-              value={asn?.hauler?.certifications?.test?.certtype}
+              value={asn?.processor?.certifications?.test?.certtype}
               placeholder="Certification Type"
               onChange={(_, { value }) =>
                 actions.pork.inputChanged({value, type: 'pcerttype'})
@@ -283,7 +283,7 @@ function EditAsnModal(props) {
             <Form.Input
               fluid
               label="Certification ID"
-              value={asn?.hauler?.certifications?.test?.certificationid}
+              value={asn?.processor?.certifications?.test?.certificationid}
               onChange={(_, { value }) =>
                 actions.pork.inputChanged({ value, type: "pcertid" })
               }
@@ -291,7 +291,7 @@ function EditAsnModal(props) {
             <Form.Input
               fluid
               label="Certification Expiration Date"
-              value={asn?.hauler?.certifications?.test?.expiration}
+              value={asn?.processor?.certifications?.test?.expiration}
               onChange={(_, { value }) =>
                 actions.pork.inputChanged({ value, type: "pcertexp" })
               }
