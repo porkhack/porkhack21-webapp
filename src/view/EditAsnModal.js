@@ -3,15 +3,12 @@ import { jsx } from "@emotion/react";
 
 import { Modal, Divider, Button, Icon, Form } from "semantic-ui-react";
 import { useOvermind } from "../overmind";
-//import Form from '@rjsf/semantic-ui'
-
-//import Header from './Header';
-//import List from './List';
-//import NewRule from './NewRule';
 
 function EditAsnModal(props) {
   const { actions, state } = useOvermind();
-  let asn = state.pork.newAsn || {};
+  let id = state.pork.selectedAsn;
+  let asn = (id==='new') ? state.pork.newAsn : state.pork.asns[id];
+  asn = asn || {};
 
   let things = ["haulers", "processors", "locations"];
   let options = {};
@@ -19,7 +16,7 @@ function EditAsnModal(props) {
     options[key] = Object.values(state.pork[key]).map((item) => ({
       key: item.name,
       text: item.name,
-      value: item.id,
+      value: item.name,
     }));
   });
 
@@ -44,6 +41,7 @@ function EditAsnModal(props) {
               label="Ship From Location"
               options={options.locations}
               placeholder='Ship From Location'
+              value={asn.scheduled && asn.scheduled.shipfromlocation && asn.scheduled.shipfromlocation.name || ''}
               onChange={(evt, {value}) => actions.pork.inputChanged({value, type: 'location'})}
             />
             <Form.Select
@@ -59,11 +57,12 @@ function EditAsnModal(props) {
               label="Processor"
               options={options.processors}
               placeholder='Processor'
+              value={asn.processor && asn.processor.name || ''}
               onChange={(evt, {value}) => actions.pork.inputChanged({value, type: 'processor'})}
             />
           <Divider>Load Info</Divider>
-          <Form.Input fluid label='Head Count' onChange={(evt, {value}) => actions.pork.inputChanged({value, type:'count'})}/>
-          <Form.Input fluid label='Load Weight (lbs)' onChange={(evt, {value}) => actions.pork.inputChanged({value, type: 'weight'})}/>
+          <Form.Input fluid label='Head Count' value={asn.enroute && asn.enroute.head && asn.enroute.head.value} onChange={(evt, {value}) => actions.pork.inputChanged({value, type:'count'})}/>
+          <Form.Input fluid label='Load Weight (lbs)' value={asn.enroute && asn.enroute.weight && asn.enroute.weight.value} onChange={(evt, {value}) => actions.pork.inputChanged({value, type: 'weight'})}/>
           <Button type='submit'>Submit</Button>
         </Form>
         </div>

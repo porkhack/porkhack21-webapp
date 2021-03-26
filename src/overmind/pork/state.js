@@ -1,6 +1,7 @@
 import dummy from "./dummy";
 
 export const state = {
+  newAsn: {},
   processors: {
     123: {
       name: 'Tyson Foods Inc.',
@@ -13,12 +14,15 @@ export const state = {
     789: {
       name: `Hormel Foods Corp.`,
       id: '789',
-    }
-
+    },
+    101: {
+      name: "Processor, Inc.",
+      id: '101',
+    },
   }, 
   haulers: {
     123: {
-      name: 'Big Mac Trucking',
+      name: "Hauler, Inc.",
       id: '123',
     },
     456: {

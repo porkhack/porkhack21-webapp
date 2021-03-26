@@ -44,7 +44,7 @@ export function Asn(props) {
         <Label color={status === "Arrived" ? "green" : "grey"} size={"huge"}>
           {status}
         </Label>
-        <Button icon onClick={actions.pork.editAsn} size="tiny">
+        <Button icon onClick={() => actions.pork.editAsn({id:props.id})} size="tiny">
           <Icon name="edit" />
         </Button>
       </div>

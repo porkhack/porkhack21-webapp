@@ -24,12 +24,14 @@ export function sortTradingPartners({state, actions}) {
   state.farmers = _.filter(tps, {type: "farmers"})
 }
 
-export async function editAsn({state, actions}) {
+export async function editAsn({state, actions}, props) {
   state.view.editAsn = true;
+  state.pork.selectedAsn = props.id;
 }
 
 export async function addAsn({state, actions}) {
   state.pork.newAsn = {};
+  state.pork.selectedAsn = 'new';
   state.view.editAsn = true;
   await actions.oada.post({
     path:"/bookmarks/trellisfw/asns",
@@ -43,15 +45,20 @@ export async function doneClicked({state, actions}) {
     path:'/bookmarks/trellisfw/asns',
     data: dummy
   })
+
+  delete state.pork.selectedAsn;
+  state.pork.newAsn = {};
 }
 
 export async function editAsnClosed({state, actions}) {
-  delete state.pork.newAsn;
-  state.view.editAsn = false;
   await actions.oada.post({
     path:'/bookmarks/trellisfw/asns',
     data: dummy
   })
+
+  state.view.editAsn = false;
+  delete state.pork.selectedAsn;
+  state.pork.newAsn = {};
 }
 
 export async function inputChanged({state, actions}, {type, value}) {
@@ -85,5 +92,4 @@ export async function inputChanged({state, actions}, {type, value}) {
   console.log(state.pork.newAsn, type, mappings[type], result)
   pointer.set(asn, mappings[type], result);
   state.pork.newAsn = asn;
-
 }
