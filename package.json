@@ -1,5 +1,6 @@
 {
   "name": "porkhack21-webapp",
+  "homepage": "https://porkhack.github.io/porkhack21-webapp/",
   "version": "0.1.0",
   "scripts": {
     "start": "concurrently \"overmind-devtools\" \"export HTTPS=true&&SSL_CRT_FILE=cert.pem&&SSL_KEY_FILE=key.pem react-scripts start\"",
