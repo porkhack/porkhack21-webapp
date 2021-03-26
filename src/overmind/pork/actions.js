@@ -16,7 +16,7 @@ export async function initialize({ state, actions }, props) {
 }
 
 export function sortTradingPartners({state, actions}) {
-  let conn = state.oada.defaultConnection;
+  let conn = state.oada.defaultConn;
   let tps = state.oada[conn].bookmarks.trellisfw["trading-partners"];
 
   state.haulers = _.filter(tps, {type: "hauler"})

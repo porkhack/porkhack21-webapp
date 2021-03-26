@@ -51,5 +51,6 @@ export async function login({ actions, state }, { domain, token }) {
   const { error } = await myActions.connect({ domain, token });
   if (!error) {
     await myActions.getUserInfo();
+    await actions.pork.initialize();
   }
 }
