@@ -1,8 +1,6 @@
 module.exports = {
   "redirect_uris": [
-    "https://porkhack.github.io/oauth/redirect.html",
     "https://porkhack.github.io/oauth2/redirect.html",
-    "http://localhost:3000/oauth/redirect.html",
     "http://localhost:3000/oauth2/redirect.html",
   ],
   "token_endpoint_auth_method": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
