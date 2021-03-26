@@ -32,6 +32,8 @@ export function Asn(props) {
     </div>
   }
 
+  const shipfromname = asn.scheduled?.shipfromlocation?.name || '<No Location Yet>';
+  const farmername = asn.farmer?.name || '<No Farmer Yet>';
   return (
     <div
       css={css`
@@ -55,7 +57,7 @@ export function Asn(props) {
           }
         `}
       >
-        <header>{`ASN ${props.id}`}</header>
+        <header>{`ASN ${asn.shipdate}: ${farmername} - ${shipfromname}`}</header>
         <Label color={status === "Arrived" ? "green" : "grey"} size={"huge"}>
           {status}
         </Label>

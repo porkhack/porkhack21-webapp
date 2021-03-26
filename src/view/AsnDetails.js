@@ -65,34 +65,39 @@ export function AsnDetails({ id }) {
         { asn.scheduled ? displayScheduled(asn) : '' }
         { asn.enroute ? displayEnroute(asn) : '' }
         { asn.arrived ? displayArrived(asn) : '' }
-      </div>
-    
-    
-      <div css={css`
-        min-width: 30%;
-        margin: 20px;
-      `}>
-         <h3>Shipping Stats</h3>
-       <div css={css`${redhead}`}>
-         { !(asn.enroute && asn.enroute.head) ? '' :
-           `Head Shipped: ${asn.enroute.head.value}` 
-         }
-         <br/>
-         { !(asn.arrived  && asn.arrived.head) ? '' :
-           `Head Received: ${asn.arrived.head.value}` 
-         }
-       </div>
-       <hr/>
-       <div>
-         { !(asn.enroute && asn.enroute.weight) ? '' :
-           `Weight Shipped: ${asn.enroute.weight.value} ${asn.enroute.weight.units}` 
-         }
-         <br/>
-           { !(asn.arrived && asn.arrived.weight) ? '' :
-           `Weight Received: ${asn.arrived.weight.value} ${asn.arrived.weight.units}` 
-         }
+        <div css={css`font-size: 0.6em; color: #AAAAAA;`}>
+          ID: {id}
         </div>
       </div>
+    
+    
+      { (!asn.enroute && !asn.arrived) ? '' : 
+        <div css={css`
+          min-width: 30%;
+          margin: 20px;
+        `}>
+          <h3>Shipping Stats</h3>
+          <div css={css`${redhead}`}>
+            { !(asn.enroute && asn.enroute.head) ? '' :
+              `Head Shipped: ${asn.enroute.head.value}` 
+            }
+           <br/>
+           { !(asn.arrived  && asn.arrived.head) ? '' :
+             `Head Received: ${asn.arrived.head.value}` 
+           }
+         </div>
+         <hr/>
+         <div>
+           { !(asn.enroute && asn.enroute.weight) ? '' :
+             `Weight Shipped: ${asn.enroute.weight.value} ${asn.enroute.weight.units}` 
+           }
+           <br/>
+             { !(asn.arrived && asn.arrived.weight) ? '' :
+             `Weight Received: ${asn.arrived.weight.value} ${asn.arrived.weight.units}` 
+           }
+          </div>
+        </div>
+      }
 
 
     
