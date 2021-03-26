@@ -121,6 +121,7 @@ export async function inputChanged({ state, actions }, { type, value }) {
   let mappings = {
     count: "/enroute/head",
     weight: "/enroute/weight",
+    status: "/status"
   };
 
   let asn = _.cloneDeep(state.pork.newAsn);
