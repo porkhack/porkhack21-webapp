@@ -16,7 +16,7 @@ function AsnList() {
         flexDirection: "column",
       }}
     >
-      {Object.keys(asns || {}).map((key) => (
+      {Object.keys(asns || {}).sort().map((key) => (
         <Asn id={key} key={key} />
       ))}
     </div>

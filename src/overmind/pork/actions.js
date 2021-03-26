@@ -28,6 +28,7 @@ export function mapAsns({state, actions}) {
     if (date.charAt(0) === '_') return
     Object.keys(asns['day-index'][date]).forEach(key => {
       if (key.charAt(0) === '_') return
+      if (Object.keys(asns['day-index'][date][key]).length < 3) return
       state.pork.asns[key] = _.cloneDeep(asns['day-index'][date][key]);
     })
   })

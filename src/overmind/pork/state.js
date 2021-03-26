@@ -49,8 +49,5 @@ export const state = {
     }
   },
   asns: {
-    aaaa: dummy,
-    bbbb: dummy,
-    cccc: dummy,
   },
 };
