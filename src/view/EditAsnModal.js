@@ -19,14 +19,12 @@ function EditAsnModal(props) {
       value: item.name,
     }));
   });
+  let title = state.pork.selectedAsn === 'new' ? 'Add New ASN' : 'Edit ASN';
 
   return (
-    <Modal open={state.view.editAsn} onClose={actions.view.editAsnClosed}>
+    <Modal centered style={{top: 'auto'}} open={state.view.editAsn} onClose={actions.view.editAsnClosed}>
+      <Modal.Header>{title}</Modal.Header>
       <Modal.Content>
-        <Button icon onClick={actions.pork.editAsnClosed}>
-          <Icon name="close" />
-        </Button>
-
         <div
           css={{
             minHeight: 300,
@@ -63,10 +61,13 @@ function EditAsnModal(props) {
           <Divider>Load Info</Divider>
           <Form.Input fluid label='Head Count' value={asn.enroute && asn.enroute.head && asn.enroute.head.value} onChange={(evt, {value}) => actions.pork.inputChanged({value, type:'count'})}/>
           <Form.Input fluid label='Load Weight (lbs)' value={asn.enroute && asn.enroute.weight && asn.enroute.weight.value} onChange={(evt, {value}) => actions.pork.inputChanged({value, type: 'weight'})}/>
-          <Button type='submit'>Submit</Button>
         </Form>
         </div>
-        <Button onClick={actions.pork.doneClicked}>Done</Button>
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+          <Button onClick={actions.pork.doneClicked}>Submit</Button>
+          <div style={{flexGrow: 1}} />
+          <Button  onClick={actions.pork.editAsnClosed}>Close</Button>
+        </div>
       </Modal.Content>
     </Modal>
   );
