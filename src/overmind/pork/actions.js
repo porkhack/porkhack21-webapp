@@ -2,6 +2,7 @@ import pointer from "json-pointer";
 import _ from "lodash";
 import trees from "@pork/trees";
 import ksuid from 'ksuid';
+import moment from 'moment';
 
 export async function initialize({ state, actions }, props) {
   await actions.oada.get({
@@ -66,10 +67,9 @@ export async function editAsn({ state, actions }, props) {
 
 export async function addAsn({ state, actions }) {
   state.pork.newAsn = {};
-  state.pork.selectedAsn = "new";
+  state.pork.selectedAsn = ksuid.randomSync().string;
   state.view.editAsn = true;
 
-  // TODO: Add the ASN
 }
 
 export async function doneClicked({ state, actions }) {
@@ -77,7 +77,7 @@ export async function doneClicked({ state, actions }) {
 
   const asn = state.pork.newAsn;
   if (!asn.id) {
-    asn.id = ksuid.randomSync().string;
+    asn.id = state.pork.selectedAsn;
   }
 
   const day = asn.shipdate;
@@ -85,16 +85,14 @@ export async function doneClicked({ state, actions }) {
     console.log('ERROR: Your day (${day}) does not look like YYYY-MM-DD');
     return;
   }
-  const path = `/bookmarks/trellisfw/asn/day-index/${day}/${asn.id}`;
+  const path = `/bookmarks/trellisfw/asns/day-index/${day}/${asn.id}`;
   await actions.oada.put({
     path,
-    tree,
+    tree: trees.tree,
     data: asn,
   });
 
-  // TODO: Add ASN?
-
-  delete state.pork.selectedAsn;
+  state.pork.selectedAsn = '';
   state.pork.newAsn = {};
 }
 
@@ -169,3 +167,14 @@ export async function unSelectAsn({ state, actions }, { id }) {
   }
   state.view.selectedASNs[id] = false;
 }
+
+export function setNow({state}, { key }) {
+  const now = moment().unix();
+  switch(key) {
+    case 'enroute.departuretime': 
+      state.newAsn.enroute.departuretime = moment().unix();
+    break;
+  }
+  
+}
+

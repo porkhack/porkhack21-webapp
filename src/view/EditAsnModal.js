@@ -1,5 +1,5 @@
 /** @jsx jsx */ /** @jsxRuntime classic */
-import { jsx } from "@emotion/react";
+import { jsx, css } from "@emotion/react";
 
 import { Modal, Divider, Button, Icon, Form } from "semantic-ui-react";
 import { useOvermind } from "../overmind";
@@ -87,14 +87,20 @@ function EditAsnModal(props) {
                 actions.pork.inputChanged({ value, type: "weight" })
               }
             />
-            <Form.Input
-              fluid
-              label="Departure Time"
-              value={asn?.enroute?.departuretime}
-              onChange={(_, { value }) =>
-                actions.pork.inputChanged({ value, type: "departuretime" })
-              }
-            />
+            <div css={css`display: flex; flex-direction: row; width: 100%`}>
+              <Form.Input
+                css={css`flex-grow: 1`}
+                fluid
+                label="Departure Time"
+                value={asn?.enroute?.departuretime}
+                onChange={(_, { value }) =>
+                  actions.pork.inputChanged({ value, type: "departuretime" })
+                }
+              />
+              <Button onClick={() => actions.pork.setNow({ key: 'enroute.departuretime' })}>
+                Now
+              </Button>
+            </div>
             <Form.Input
               fluid
               label="ETA"
