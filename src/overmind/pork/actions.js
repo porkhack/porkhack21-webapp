@@ -37,9 +37,9 @@ export function sortTradingPartners({state, actions}) {
   let conn = state.oada.defaultConn;
   let tps = state.oada[conn].bookmarks.trellisfw["trading-partners"];
 
-  state.haulers = _.filter(tps, {type: "hauler"})
-  state.processors = _.filter(tps, {type: "processors"})
-  state.farmers = _.filter(tps, {type: "farmers"})
+  state.pork.haulers = _.filter(tps, {type: "hauler"})
+  state.pork.processors = _.filter(tps, {type: "processors"})
+  state.pork.farmers = _.filter(tps, {type: "farmers"})
 }
 
 export async function editAsn({state, actions}, props) {
@@ -51,17 +51,13 @@ export async function addAsn({state, actions}) {
   state.pork.newAsn = {};
   state.pork.selectedAsn = 'new';
   state.view.editAsn = true;
-  await actions.oada.post({
-    path:"/bookmarks/trellisfw/asns",
-    data: dummy
-  })
 }
 
 export async function doneClicked({state, actions}) {
   state.view.editAsn = false;
   await actions.oada.post({
     path:'/bookmarks/trellisfw/asns',
-    data: dummy
+    data: state.pork.newAsn
   })
 
   delete state.pork.selectedAsn;
