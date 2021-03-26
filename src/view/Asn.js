@@ -6,6 +6,7 @@ import { useOvermind } from "../overmind";
 import { Button, Icon, Label } from "semantic-ui-react";
 
 import { AsnPlayer } from "./AsnPlayer";
+import { AsnDetails } from "./AsnDetails";
 
 export function Asn(props) {
   const { state, actions } = useOvermind();
@@ -16,6 +17,20 @@ export function Asn(props) {
     .map((word) => word[0] ? word[0].toUpperCase() + word.substring(1) : '')
     .join(" ");
   let shipfrom = asn.scheduled?.shipfromlocation;
+
+  const displayHead = () => {
+    const redhead = asn.enroute && asn.arrived && asn.enroute.head && asn.arrived.head && asn.enroute.head != asn.arrived.head ? 'color: red;' : '';
+    if (!asn.arrived && !asn.enroute) return '';
+    return <div css={css`${redhead}`}>
+      { !(asn.enroute && asn.enroute.head) ? '' :
+        `Head Shipped: ${asn.enroute.head.value}` 
+      }
+      <br/>
+      { !(asn.arrived  && asn.arrived.head) ? '' :
+        `Head Received: ${asn.arrived.head.value}` 
+      }
+    </div>
+  }
 
   return (
     <div
@@ -101,14 +116,30 @@ export function Asn(props) {
               <div>{shipfrom?.name || "Unknown"}</div>
               <div>{shipfrom?.address || ""}</div>
             </div>
+            {displayHead()}
           </div>
         </div>
       </div>
 
-      <Button icon onClick={actions.pork.selectAsn}>
-        <Icon name="down arrow" />
-        More Details
-      </Button>
+      { state.view.selectedASNs && state.view.selectedASNs[props.id] ? 
+          <div css={css`
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+          `}>
+            <AsnDetails id={props.id} />
+            <Button icon onClick={() => actions.pork.unSelectAsn({id: props.id})}>
+              <Icon name="up arrow" />
+              Less Details
+            </Button>
+          </div>
+        :
+          <Button icon onClick={() => actions.pork.selectAsn({id: props.id})}>
+            <Icon name="down arrow" />
+            More Details
+          </Button>
+      }
     </div>
+      
   );
 }

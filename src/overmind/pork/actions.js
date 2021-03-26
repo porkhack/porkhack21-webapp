@@ -35,7 +35,7 @@ export function mapAsns({state, actions}) {
 
 export function sortTradingPartners({state, actions}) {
   let conn = state.oada.defaultConn;
-  let tps = state.oada[conn].bookmarks.trellisfw["trading-partners"];
+  let tps = (!state.oada[conn] || !state.oada[conn].bookmarks) ? [] : state.oada[conn].bookmarks.trellisfw["trading-partners"];
 
   state.pork.haulers = _.filter(tps, {type: "hauler"})
   state.pork.processors = _.filter(tps, {type: "processors"})
@@ -105,4 +105,18 @@ export async function inputChanged({state, actions}, {type, value}) {
   let asn = _.cloneDeep(state.pork.newAsn);
   pointer.set(asn, mappings[type], result);
   state.pork.newAsn = asn;
+}
+
+
+export async function selectAsn({state, actions}, {id}) {
+  if (!state.view.selectedASNs) {
+    state.view.selectedASNs = {};
+  }
+  state.view.selectedASNs[id] = true;
+}
+export async function unSelectAsn({state, actions}, {id}) {
+  if (!state.view.selectedASNs) {
+    state.view.selectedASNs = {};
+  }
+  state.view.selectedASNs[id] = false;
 }
