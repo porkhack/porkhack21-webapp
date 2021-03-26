@@ -6,6 +6,7 @@ import { useOvermind } from "../overmind";
 import { Button, Icon, Label } from "semantic-ui-react";
 
 import { AsnPlayer } from "./AsnPlayer";
+import { AsnDetails } from "./AsnDetails";
 
 export function Asn(props) {
   const { state, actions } = useOvermind();
@@ -105,10 +106,25 @@ export function Asn(props) {
         </div>
       </div>
 
-      <Button icon onClick={actions.pork.selectAsn}>
-        <Icon name="down arrow" />
-        More Details
-      </Button>
+      { state.view.selectedASNs && state.view.selectedASNs[props.id] ? 
+          <div css={css`
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+          `}>
+            <AsnDetails id={props.id} />
+            <Button icon onClick={() => actions.pork.unSelectAsn({id: props.id})}>
+              <Icon name="up arrow" />
+              Less Details
+            </Button>
+          </div>
+        :
+          <Button icon onClick={() => actions.pork.selectAsn({id: props.id})}>
+            <Icon name="down arrow" />
+            More Details
+          </Button>
+      }
     </div>
+      
   );
 }
