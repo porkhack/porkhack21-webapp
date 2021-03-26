@@ -20,11 +20,9 @@ export function Asn(props) {
 
   const displayHead = () => {
     const redhead =
-      asn.enroute &&
-      asn.arrived &&
-      asn.enroute.head &&
-      asn.arrived.head &&
-      asn.enroute.head != asn.arrived.head
+      asn?.enroute?.head &&
+      asn?.arrived?.head &&
+      asn.enroute.head !== asn.arrived.head
         ? "color: red;"
         : "";
     if (!asn.arrived && !asn.enroute) return "";
@@ -34,13 +32,9 @@ export function Asn(props) {
           ${redhead}
         `}
       >
-        {!(asn.enroute && asn.enroute.head)
-          ? ""
-          : `Head Shipped: ${asn.enroute.head.value}`}
+        {!asn?.enroute?.head ? "" : `Head Shipped: ${asn.enroute.head.value}`}
         <br />
-        {!(asn.arrived && asn.arrived.head)
-          ? ""
-          : `Head Received: ${asn.arrived.head.value}`}
+        {!asn?.arrived?.head ? "" : `Head Received: ${asn.arrived.head.value}`}
       </div>
     );
   };

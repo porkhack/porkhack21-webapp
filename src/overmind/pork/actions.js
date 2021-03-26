@@ -1,8 +1,8 @@
 import pointer from "json-pointer";
 import _ from "lodash";
 import trees from "@pork/trees";
-import ksuid from 'ksuid';
-import moment from 'moment';
+import ksuid from "ksuid";
+import moment from "moment";
 
 export async function initialize({ state, actions }, props) {
   await actions.oada.get({
@@ -69,7 +69,6 @@ export async function addAsn({ state, actions }) {
   state.pork.newAsn = {};
   state.pork.selectedAsn = ksuid.randomSync().string;
   state.view.editAsn = true;
-
 }
 
 export async function doneClicked({ state, actions }) {
@@ -82,7 +81,7 @@ export async function doneClicked({ state, actions }) {
 
   const day = asn.shipdate;
   if (!day || !day.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)) {
-    console.log('ERROR: Your day (${day}) does not look like YYYY-MM-DD');
+    console.log(`ERROR: Your day (${day}) does not look like YYYY-MM-DD`);
     return;
   }
   const path = `/bookmarks/trellisfw/asns/day-index/${day}/${asn.id}`;
@@ -92,7 +91,7 @@ export async function doneClicked({ state, actions }) {
     data: asn,
   });
 
-  state.pork.selectedAsn = '';
+  state.pork.selectedAsn = "";
   state.pork.newAsn = {};
 }
 
@@ -143,7 +142,7 @@ export async function inputChanged({ state, actions }, { type, value }) {
   let mappings = {
     count: "/enroute/head",
     weight: "/enroute/weight",
-    status: "/status"
+    status: "/status",
   };
 
   let asn = _.cloneDeep(state.pork.newAsn);
@@ -164,20 +163,19 @@ export async function unSelectAsn({ state, actions }, { id }) {
   state.view.selectedASNs[id] = false;
 }
 
-export function setNow({state}, { key }) {
+export function setNow({ state }, { key }) {
   const now = moment().unix();
-console.log('XXXXX key = ', key);
-  switch(key) {
-    case 'enroute.departuretime': 
-      state.pork.newAsn.enroute.departuretime = moment().unix();
-    break;
-    case 'enroute.arrivaltime': 
-      state.pork.newAsn.enroute.arrivaltime = moment().unix();
-    break;
-    case 'arrived.arrivaltime': 
-      state.pork.newAsn.arrived.arrivaltime = moment().unix();
-    break;
+  switch (key) {
+    case "enroute.departuretime":
+      state.pork.newAsn.enroute.departuretime = now;
+      break;
+    case "enroute.arrivaltime":
+      state.pork.newAsn.enroute.arrivaltime = now;
+      break;
+    case "arrived.arrivaltime":
+      state.pork.newAsn.arrived.arrivaltime = now;
+      break;
+    default:
+      console.error("Invlid field name to set time on.");
   }
-  
 }
-

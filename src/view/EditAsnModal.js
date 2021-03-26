@@ -1,12 +1,11 @@
 /** @jsx jsx */ /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
 
-import { Modal, Divider, Button, Icon, Form } from "semantic-ui-react";
+import { Modal, Divider, Button, Form } from "semantic-ui-react";
 import { useOvermind } from "../overmind";
 
 function EditAsnModal(props) {
   const { actions, state } = useOvermind();
-  let id = state.pork.selectedAsn;
   let asn = state.pork.newAsn;
 
   let things = ["haulers", "processors", "locations"];
@@ -21,27 +20,31 @@ function EditAsnModal(props) {
   let title = state.pork.selectedAsn === "new" ? "Add New ASN" : "Edit ASN";
   let statuses = [
     {
-      key: 'scheduled',
-      text: 'Scheduled',
-      value: 'scheduled',
-    },{
-      key: 'Cancelled',
-      text: 'Cancelled',
-      value: 'Cancelled',
-    },{
-      key: 'en route',
-      text: 'En Route',
-      value: 'en route',
-    },{
-      key: 'arrived',
-      text: 'Arrived',
-      value: 'arrived',
-    }, {
-      key: 'received',
-      text: 'Recieved',
-      value: 'received'
-    }
-  ]
+      key: "scheduled",
+      text: "Scheduled",
+      value: "scheduled",
+    },
+    {
+      key: "Cancelled",
+      text: "Cancelled",
+      value: "Cancelled",
+    },
+    {
+      key: "en route",
+      text: "En Route",
+      value: "en route",
+    },
+    {
+      key: "arrived",
+      text: "Arrived",
+      value: "arrived",
+    },
+    {
+      key: "received",
+      text: "Recieved",
+      value: "received",
+    },
+  ];
 
   return (
     <Modal
@@ -68,7 +71,7 @@ function EditAsnModal(props) {
               placeholder="Status"
               value={asn?.status}
               onChange={(_, { value }) =>
-                actions.pork.inputChanged({value, type: "status"})
+                actions.pork.inputChanged({ value, type: "status" })
               }
             />
 
@@ -119,9 +122,18 @@ function EditAsnModal(props) {
                 actions.pork.inputChanged({ value, type: "weight" })
               }
             />
-            <div css={css`display: flex; flex-direction: row; width: 100%; align-items: center`}>
+            <div
+              css={css`
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                align-items: center;
+              `}
+            >
               <Form.Input
-                css={css`flex-grow: 1`}
+                css={css`
+                  flex-grow: 1;
+                `}
                 fluid
                 label="Departure Time"
                 value={asn?.enroute?.departuretime}
@@ -129,13 +141,29 @@ function EditAsnModal(props) {
                   actions.pork.inputChanged({ value, type: "departuretime" })
                 }
               />
-              <Button css={css`max-height: 40px`} onClick={() => actions.pork.setNow({ key: 'enroute.departuretime' })}>
+              <Button
+                css={css`
+                  max-height: 40px;
+                `}
+                onClick={() =>
+                  actions.pork.setNow({ key: "enroute.departuretime" })
+                }
+              >
                 Now
               </Button>
             </div>
-            <div css={css`display: flex; flex-direction: row; width: 100%; align-items: center`}>
+            <div
+              css={css`
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                align-items: center;
+              `}
+            >
               <Form.Input
-                css={css`flex-grow: 1`}
+                css={css`
+                  flex-grow: 1;
+                `}
                 fluid
                 label="ETA"
                 value={asn?.enroute?.arrivaltime}
@@ -143,7 +171,14 @@ function EditAsnModal(props) {
                   actions.pork.inputChanged({ value, type: "etatime" })
                 }
               />
-              <Button  css={css`max-height: 40px`} onClick={() => actions.pork.setNow({ key: 'enroute.arrivaltime' })}>
+              <Button
+                css={css`
+                  max-height: 40px;
+                `}
+                onClick={() =>
+                  actions.pork.setNow({ key: "enroute.arrivaltime" })
+                }
+              >
                 Now
               </Button>
             </div>
@@ -165,9 +200,18 @@ function EditAsnModal(props) {
                 actions.pork.inputChanged({ value, type: "aweight" })
               }
             />
-            <div css={css`display: flex; flex-direction: row; width: 100%; align-items: center`}>
+            <div
+              css={css`
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                align-items: center;
+              `}
+            >
               <Form.Input
-                css={css`flex-grow: 1`}
+                css={css`
+                  flex-grow: 1;
+                `}
                 fluid
                 label="Arrival Time"
                 value={asn?.arrived?.arrivaltime}
@@ -175,12 +219,17 @@ function EditAsnModal(props) {
                   actions.pork.inputChanged({ value, type: "arrivaltime" })
                 }
               />
-              <Button  css={css`max-height: 40px`} onClick={() => actions.pork.setNow({ key: 'arrived.arrivaltime' })}>
+              <Button
+                css={css`
+                  max-height: 40px;
+                `}
+                onClick={() =>
+                  actions.pork.setNow({ key: "arrived.arrivaltime" })
+                }
+              >
                 Now
               </Button>
             </div>
-
-
           </Form>
         </div>
         <div style={{ display: "flex", flexDirection: "row" }}>
