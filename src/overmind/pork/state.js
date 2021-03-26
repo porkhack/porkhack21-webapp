@@ -1,53 +1,55 @@
-import dummy from "./dummy";
+//import dummy from "./dummy";
 
 export const state = {
+  asns: {},
+}; /*{
   newAsn: {},
   processors: {
-    123: {
-      name: 'Tyson Foods Inc.',
-      id: '123',
+    "Tyson Foods Inc.": {
+      name: "Tyson Foods Inc.",
+      id: "123",
     },
-    456: {
+    "Smithfield Packaged Meats": {
       name: `Smithfield Packaged Meats`,
-      id: '456'
+      id: "456",
     },
-    789: {
+    "Hormel Foods Corp.": {
       name: `Hormel Foods Corp.`,
-      id: '789',
+      id: "789",
     },
-    101: {
+    "Processor, Inc.": {
       name: "Processor, Inc.",
-      id: '101',
+      id: "101",
     },
-  }, 
+  },
   haulers: {
-    123: {
+    "Hauler, Inc.": {
       name: "Hauler, Inc.",
-      id: '123',
+      id: "123",
     },
-    456: {
+    "Jim's Trucks": {
       name: `Jim's Trucks`,
-      id: '456',
+      id: "456",
     },
-    789: {
+    "Susan's Hauling": {
       name: `Susan's Hauling`,
-      id: '789',
-    }
+      id: "789",
+    },
   },
   locations: {
-    123: {
-      name: 'West Barn',
-      id: '123',
+    "West Barn": {
+      name: "West Barn",
+      id: "123",
     },
-    456: {
+    "East Barn 1": {
       name: `East Barn 1`,
-      id: '456',
+      id: "456",
     },
-    789: {
+    "East Barn 2": {
       name: `East Barn 2`,
-      id: '789',
-    }
+      id: "789",
+    },
   },
   asns: {
   },
-};
+};*/

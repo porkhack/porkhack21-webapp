@@ -12,28 +12,42 @@ export function Asn(props) {
   const { state, actions } = useOvermind();
   const asn = state.pork.asns[props.id] || {};
   let shipdate = moment(asn.shipdate).format("MM/DD/YYYY");
-  let status = asn.status || ""
+  let status = (asn.status || "")
     .split(" ")
-    .map((word) => word[0] ? word[0].toUpperCase() + word.substring(1) : '')
+    .map((word) => (word[0] ? word[0].toUpperCase() + word.substring(1) : ""))
     .join(" ");
   let shipfrom = asn.scheduled?.shipfromlocation;
 
   const displayHead = () => {
-    const redhead = asn.enroute && asn.arrived && asn.enroute.head && asn.arrived.head && asn.enroute.head != asn.arrived.head ? 'color: red;' : '';
-    if (!asn.arrived && !asn.enroute) return '';
-    return <div css={css`${redhead}`}>
-      { !(asn.enroute && asn.enroute.head) ? '' :
-        `Head Shipped: ${asn.enroute.head.value}` 
-      }
-      <br/>
-      { !(asn.arrived  && asn.arrived.head) ? '' :
-        `Head Received: ${asn.arrived.head.value}` 
-      }
-    </div>
-  }
+    const redhead =
+      asn.enroute &&
+      asn.arrived &&
+      asn.enroute.head &&
+      asn.arrived.head &&
+      asn.enroute.head != asn.arrived.head
+        ? "color: red;"
+        : "";
+    if (!asn.arrived && !asn.enroute) return "";
+    return (
+      <div
+        css={css`
+          ${redhead}
+        `}
+      >
+        {!(asn.enroute && asn.enroute.head)
+          ? ""
+          : `Head Shipped: ${asn.enroute.head.value}`}
+        <br />
+        {!(asn.arrived && asn.arrived.head)
+          ? ""
+          : `Head Received: ${asn.arrived.head.value}`}
+      </div>
+    );
+  };
 
-  const shipfromname = asn.scheduled?.shipfromlocation?.name || '<No Location Yet>';
-  const farmername = asn.farmer?.name || '<No Farmer Yet>';
+  const shipfromname =
+    asn.scheduled?.shipfromlocation?.name || "<No Location Yet>";
+  const farmername = asn.farmer?.name || "<No Farmer Yet>";
   return (
     <div
       css={css`
@@ -58,10 +72,17 @@ export function Asn(props) {
         `}
       >
         <header>{`ASN ${asn.shipdate}: ${farmername} - ${shipfromname}`}</header>
-        <Label color={status === "Arrived" ? "green" : "grey"} size={"huge"}>
+        <Label
+          color={status.toLowerCase() === "arrived" ? "green" : "grey"}
+          size={"huge"}
+        >
           {status}
         </Label>
-        <Button icon onClick={() => actions.pork.editAsn({id:props.id})} size="tiny">
+        <Button
+          icon
+          onClick={() => actions.pork.editAsn({ id: props.id })}
+          size="tiny"
+        >
           <Icon name="edit" />
         </Button>
       </div>
@@ -123,25 +144,29 @@ export function Asn(props) {
         </div>
       </div>
 
-      { state.view.selectedASNs && state.view.selectedASNs[props.id] ? 
-          <div css={css`
+      {state.view.selectedASNs && state.view.selectedASNs[props.id] ? (
+        <div
+          css={css`
             display: flex;
             flex-direction: column;
             width: 100%;
-          `}>
-            <AsnDetails id={props.id} />
-            <Button icon onClick={() => actions.pork.unSelectAsn({id: props.id})}>
-              <Icon name="up arrow" />
-              Less Details
-            </Button>
-          </div>
-        :
-          <Button icon onClick={() => actions.pork.selectAsn({id: props.id})}>
-            <Icon name="down arrow" />
-            More Details
+          `}
+        >
+          <AsnDetails id={props.id} />
+          <Button
+            icon
+            onClick={() => actions.pork.unSelectAsn({ id: props.id })}
+          >
+            <Icon name="up arrow" />
+            Less Details
           </Button>
-      }
+        </div>
+      ) : (
+        <Button icon onClick={() => actions.pork.selectAsn({ id: props.id })}>
+          <Icon name="down arrow" />
+          More Details
+        </Button>
+      )}
     </div>
-      
   );
 }

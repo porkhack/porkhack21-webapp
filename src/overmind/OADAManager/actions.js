@@ -3,10 +3,10 @@ import config from "../../config";
 export async function connect({ actions, state, effects }, { domain, token }) {
   const myState = state.OADAManager;
   if (token) myState.token = token;
-    //token = await myActions.getToken(domain);
+  //token = await myActions.getToken(domain);
   return actions.oada
     .connect({
-//      token,
+      //token,
       domain: domain,
       options: config.OPTIONS,
       cache: false,
@@ -16,7 +16,7 @@ export async function connect({ actions, state, effects }, { domain, token }) {
       if (!response.error) {
         myState.currentConnection = response.connectionId;
         myState.token = response.token;
-//        myState.token = config.TOKEN;
+        //        myState.token = config.TOKEN;
         myState.connected = true;
         //Unselect local opeation
       }

@@ -5,18 +5,18 @@ import { Icon } from "semantic-ui-react";
 
 function AsnCerts(cert) {
   let color;
-  let certresult = cert?.pac?.result.toLowerCase()
+  let certresult = cert?.pac?.result.toLowerCase();
 
-  if(certresult == "valid"){
-    color = "green"
+  if (certresult === "valid") {
+    color = "green";
 
-  // If is it anything else besides valid (but still a string)
-  }else if(typeof certresult == 'string' || certresult instanceof String){
-    color = "red"
+    // If is it anything else besides valid (but still a string)
+  } else if (typeof certresult === "string" || certresult instanceof String) {
+    color = "red";
 
-  // Basically if it does not exist
-  }else{
-    color = "grey"
+    // Basically if it does not exist
+  } else {
+    color = "grey";
   }
 
   return (

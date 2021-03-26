@@ -1850,9 +1850,11 @@
   integrity sha512-DvJbbn3dUgMxDnJLH+RZQPnXak1h4ZVYQ7CWiFWjQwBFkVajT4rfw2PdpHLTSTwxrYfnoEXkuBiwkDm6tPMQeA==
 
 "@pork/trees@^1.0.2":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@pork/trees/-/trees-1.0.5.tgz#2027b64adcaea19d941a5ed3983ebda99af29d2f"
-  integrity sha512-BMG/Sr7pVjQoDejwXJCXmw4DU72LPXlhNujDEJcH5VrRUOwDoyo9hT986Qp5CbYzbeVr16xqPDR1mX1JeUvfbQ==
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@pork/trees/-/trees-1.0.6.tgz#e536c5c9734a3a61c6a33fab75d444c59699d21a"
+  integrity sha512-gdZs8t6iiOEV93kNvOMqm7F/sa7YED8WpTCjq95Q+ZAAiWPzjfupWDJZuGh0KlNqgrVOeZg3ShabxtiNtHWSDg==
+  dependencies:
+    merge "^2.1.1"
 
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"
@@ -8579,6 +8581,11 @@ merge2@^1.3.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.4.1.tgz#4368892f885e907455a6fd7dc55c0c9d404990ae"
   integrity sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==
+
+merge@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/merge/-/merge-2.1.1.tgz#59ef4bf7e0b3e879186436e8481c06a6c162ca98"
+  integrity sha512-jz+Cfrg9GWOZbQAnDQ4hlVnQky+341Yk5ru8bZSe6sIDTCIg8n9i/u7hSQGSVOF3C7lH6mGtqjkiT9G4wFLL0w==
 
 methods@^1.1.2, methods@~1.1.2:
   version "1.1.2"
