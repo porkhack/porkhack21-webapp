@@ -24,9 +24,9 @@ export function AsnDetails({ id }) {
   const displayEnroute = (asn) => {
     const e = asn.enroute;
     const departure = e.departuretime ?
-      'Departed: '+moment(e.departuretime).fromNow() : 'Not Departed';
+      'Departed: '+moment(e.departuretime,'X').fromNow() : 'Not Departed';
     const arrival = e.arrivaltime ?
-      'Expected Arrival: '+moment(e.departuretime).fromNow() : '';
+      'Expected Arrival: '+moment(e.departuretime, 'X').fromNow() : '';
     return <div>
       <h3>Enroute:</h3>
       {departure}
@@ -39,7 +39,7 @@ export function AsnDetails({ id }) {
   const displayArrived = (asn) => {
     const e = asn.arrived;
     const arrival = e.arrivaltime ?
-      'Arrived: '+moment(e.arrivaltime).fromNow() : '';
+      'Arrived: '+moment(e.arrivaltime, 'X').fromNow() : '';
     return <div>
       <h3>Arrived:</h3>
       {arrival}

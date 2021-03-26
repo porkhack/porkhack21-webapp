@@ -166,9 +166,16 @@ export async function unSelectAsn({ state, actions }, { id }) {
 
 export function setNow({state}, { key }) {
   const now = moment().unix();
+console.log('XXXXX key = ', key);
   switch(key) {
     case 'enroute.departuretime': 
-      state.newAsn.enroute.departuretime = moment().unix();
+      state.pork.newAsn.enroute.departuretime = moment().unix();
+    break;
+    case 'enroute.arrivaltime': 
+      state.pork.newAsn.enroute.arrivaltime = moment().unix();
+    break;
+    case 'arrived.arrivaltime': 
+      state.pork.newAsn.arrived.arrivaltime = moment().unix();
     break;
   }
   

@@ -119,7 +119,7 @@ function EditAsnModal(props) {
                 actions.pork.inputChanged({ value, type: "weight" })
               }
             />
-            <div css={css`display: flex; flex-direction: row; width: 100%`}>
+            <div css={css`display: flex; flex-direction: row; width: 100%; align-items: center`}>
               <Form.Input
                 css={css`flex-grow: 1`}
                 fluid
@@ -129,18 +129,24 @@ function EditAsnModal(props) {
                   actions.pork.inputChanged({ value, type: "departuretime" })
                 }
               />
-              <Button onClick={() => actions.pork.setNow({ key: 'enroute.departuretime' })}>
+              <Button css={css`max-height: 40px`} onClick={() => actions.pork.setNow({ key: 'enroute.departuretime' })}>
                 Now
               </Button>
             </div>
-            <Form.Input
-              fluid
-              label="ETA"
-              value={asn?.enroute?.arrivaltime}
-              onChange={(_, { value }) =>
-                actions.pork.inputChanged({ value, type: "etatime" })
-              }
-            />
+            <div css={css`display: flex; flex-direction: row; width: 100%; align-items: center`}>
+              <Form.Input
+                css={css`flex-grow: 1`}
+                fluid
+                label="ETA"
+                value={asn?.enroute?.arrivaltime}
+                onChange={(_, { value }) =>
+                  actions.pork.inputChanged({ value, type: "etatime" })
+                }
+              />
+              <Button  css={css`max-height: 40px`} onClick={() => actions.pork.setNow({ key: 'enroute.arrivaltime' })}>
+                Now
+              </Button>
+            </div>
 
             <Divider>Load Info - Arrival</Divider>
             <Form.Input
@@ -159,14 +165,20 @@ function EditAsnModal(props) {
                 actions.pork.inputChanged({ value, type: "aweight" })
               }
             />
-            <Form.Input
-              fluid
-              label="Arrival Time"
-              value={asn?.enroute?.arrival?.time}
-              onChange={(_, { value }) =>
-                actions.pork.inputChanged({ value, type: "arrivaltime" })
-              }
-            />
+            <div css={css`display: flex; flex-direction: row; width: 100%; align-items: center`}>
+              <Form.Input
+                css={css`flex-grow: 1`}
+                fluid
+                label="Arrival Time"
+                value={asn?.arrived?.arrivaltime}
+                onChange={(_, { value }) =>
+                  actions.pork.inputChanged({ value, type: "arrivaltime" })
+                }
+              />
+              <Button  css={css`max-height: 40px`} onClick={() => actions.pork.setNow({ key: 'arrived.arrivaltime' })}>
+                Now
+              </Button>
+            </div>
 
 
           </Form>
