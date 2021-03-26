@@ -112,6 +112,12 @@ export async function inputChanged({ state, actions }, { type, value }) {
   let transforms = {
     count: (val) => ({ value: val, units: "count" }),
     weight: (val) => ({ value: val, units: "lbs" }),
+    departuretime: (val) => val,
+    etatime: (val) => val,
+
+    acount: (val) => ({ value: val, units: "count" }),
+    aweight: (val) => ({ value: val, units: "lbs" }),
+    arrivaltime: (val) => val,
   };
 
   // Compute the transform or just take the value;
@@ -121,6 +127,11 @@ export async function inputChanged({ state, actions }, { type, value }) {
   let mappings = {
     count: "/enroute/head",
     weight: "/enroute/weight",
+    departuretime: "/enroute/departuretime",
+    etatime: "/enroute/arrivaltime",
+    acount: "/arrived/head",
+    aweight: "/arrived/weight",
+    arrivaltime: "/arrived/arrivaltime",
   };
 
   let asn = _.cloneDeep(state.pork.newAsn);
