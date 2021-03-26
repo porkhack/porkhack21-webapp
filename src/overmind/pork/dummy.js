@@ -34,6 +34,15 @@ module.exports = {
         expiration: "2022-04-20",
         certificationid: "9381923834",
       },
+      "02jkfjf0i2of2": {
+        certtype: "PQA-PLUS",
+        expiration: "2022-04-20",
+        certificationid: "9381923834",
+        pac: {
+          pacid: "ijd20fijedlkfj",
+          result: "you broke",
+        },
+      },
     },
     processorid: "internal_farmerid_for_processor",
     haulerid: "internal_farmrerid_for_hauler",
@@ -59,6 +68,15 @@ module.exports = {
         pac: {
           pacid: "ijd20fijedlkfj",
           result: "valid",
+        },
+      },
+      "902u390r2j3io2": {
+        certtype: "TQA",
+        expiration: "2022-04-25",
+        certificationid: "2890183410942",
+        pac: {
+          pacid: "ijd20fijedlkfj",
+          result: "invalid",
         },
       },
     },

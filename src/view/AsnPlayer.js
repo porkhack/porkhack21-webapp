@@ -4,7 +4,20 @@ import { jsx, css } from "@emotion/react";
 import { Icon } from "semantic-ui-react";
 
 function AsnCerts(cert) {
-  let color = cert?.pac?.result === "valid" ? "green" : "grey";
+  let color;
+  switch (cert?.pac?.result.toLowerCase()) {
+    case "invalid":
+      color = "red";
+      break;
+
+    case "valid":
+      color = "green";
+      break;
+
+    default:
+      color = "grey";
+      break;
+  }
 
   return (
     <div
