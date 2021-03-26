@@ -242,6 +242,33 @@ function EditAsnModal(props) {
                 Now
               </Button>
             </div>
+            <Divider>Certifications - Farmer</Divider>
+            <Form.Select
+              fluid
+              label="Certification Type"
+              options={certs}
+              value={asn?.farmer?.certifications?.test?.certtype}
+              placeholder="Certification Type"
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({value, type: 'fcerttype'})
+              }
+            />
+            <Form.Input
+              fluid
+              label="Certification ID"
+              value={asn?.farmer?.certifications?.test?.certificationid}
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({ value, type: "fcertid" })
+              }
+            />
+            <Form.Input
+              fluid
+              label="Certification Expiration Date"
+              value={asn?.farmer?.certifications?.test?.expiration}
+              onChange={(_, { value }) =>
+                actions.pork.inputChanged({ value, type: "fcertexp" })
+              }
+            />
             <Divider>Certifications - Hauler</Divider>
             <Form.Select
               fluid
@@ -269,34 +296,7 @@ function EditAsnModal(props) {
                 actions.pork.inputChanged({ value, type: "hcertexp" })
               }
             />
-            <Divider>Certifications - Processor</Divider>
-            <Form.Select
-              fluid
-              label="Certification Type"
-              options={certs}
-              value={asn?.processor?.certifications?.test?.certtype}
-              placeholder="Certification Type"
-              onChange={(_, { value }) =>
-                actions.pork.inputChanged({value, type: 'pcerttype'})
-              }
-            />
-            <Form.Input
-              fluid
-              label="Certification ID"
-              value={asn?.processor?.certifications?.test?.certificationid}
-              onChange={(_, { value }) =>
-                actions.pork.inputChanged({ value, type: "pcertid" })
-              }
-            />
-            <Form.Input
-              fluid
-              label="Certification Expiration Date"
-              value={asn?.processor?.certifications?.test?.expiration}
-              onChange={(_, { value }) =>
-                actions.pork.inputChanged({ value, type: "pcertexp" })
-              }
-            />
-          </Form>
+         </Form>
         </div>
         <div style={{ display: "flex", flexDirection: "row" }}>
           <Button onClick={actions.pork.editAsnClosed}>Close</Button>

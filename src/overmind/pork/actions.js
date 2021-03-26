@@ -145,9 +145,9 @@ export async function inputChanged({ state, actions }, { type, value }) {
     hcerttype: "/hauler/certifications/test/certtype",
     hcertexp:  "/hauler/certifications/test/expiration",
     hcertid:  "/hauler/certifications/test/certificationid",
-    pcerttype: "/processor/certifications/test/certtype",
-    pcertexp:  "/processor/certifications/test/expiration",
-    pcertid:  "/processor/certifications/test/certificationid",
+    fcerttype: "/farmer/certifications/test/certtype",
+    fcertexp:  "/farmer/certifications/test/expiration",
+    fcertid:  "/farmer/certifications/test/certificationid",
   };
 
   let asn = _.cloneDeep(state.pork.newAsn);
