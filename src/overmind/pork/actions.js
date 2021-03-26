@@ -1,16 +1,18 @@
 import pointer from 'json-pointer'
 import _ from 'lodash';
-import tree from './tree'
+import trees from '@pork/trees'
 import dummy from './dummy'
+
+console.log(trees);
 
 export async function initialize({ state, actions }, props) {
   await actions.oada.get({
     path: "/bookmarks/trellisfw/asns",
-    tree,
+    tree: trees.asn,
   });
   await actions.oada.get({
     path: "/bookmarks/trellisfw/trading-partners",
-    tree,
+    tree: trees['trading-partners'],
   });
   actions.pork.sortTradingPartners();
 }
