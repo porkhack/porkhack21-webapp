@@ -112,6 +112,12 @@ export async function inputChanged({ state, actions }, { type, value }) {
   let transforms = {
     count: (val) => ({ value: val, units: "count" }),
     weight: (val) => ({ value: val, units: "lbs" }),
+    departuretime: (val) => val,
+    etatime: (val) => val,
+
+    acount: (val) => ({ value: val, units: "count" }),
+    aweight: (val) => ({ value: val, units: "lbs" }),
+    arrivaltime: (val) => val,
   };
 
   // Compute the transform or just take the value;
