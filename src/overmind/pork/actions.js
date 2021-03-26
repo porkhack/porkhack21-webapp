@@ -1,6 +1,7 @@
 import pointer from "json-pointer";
 import _ from "lodash";
 import trees from "@pork/trees";
+import ksuid from 'ksuid';
 
 export async function initialize({ state, actions }, props) {
   await actions.oada.get({
@@ -73,6 +74,23 @@ export async function addAsn({ state, actions }) {
 
 export async function doneClicked({ state, actions }) {
   state.view.editAsn = false;
+
+  const asn = state.pork.newAsn;
+  if (!asn.id) {
+    asn.id = ksuid.randomSync().string;
+  }
+
+  const day = asn.shipdate;
+  if (!day || !day.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)) {
+    console.log('ERROR: Your day (${day}) does not look like YYYY-MM-DD');
+    return;
+  }
+  const path = `/bookmarks/trellisfw/asn/day-index/${day}/${asn.id}`;
+  await actions.oada.put({
+    path,
+    tree,
+    data: asn,
+  });
 
   // TODO: Add ASN?
 
