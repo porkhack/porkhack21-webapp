@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.f2b4e3e6.chunk.css",
-    "main.js": "/static/js/main.906789bb.chunk.js",
-    "main.js.map": "/static/js/main.906789bb.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.4c90161d.js",
-    "runtime-main.js.map": "/static/js/runtime-main.4c90161d.js.map",
-    "static/js/2.2c20888a.chunk.js": "/static/js/2.2c20888a.chunk.js",
-    "static/js/2.2c20888a.chunk.js.map": "/static/js/2.2c20888a.chunk.js.map",
-    "static/js/3.86a546c7.chunk.js": "/static/js/3.86a546c7.chunk.js",
-    "static/js/3.86a546c7.chunk.js.map": "/static/js/3.86a546c7.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.f2b4e3e6.chunk.css.map": "/static/css/main.f2b4e3e6.chunk.css.map",
-    "static/js/2.2c20888a.chunk.js.LICENSE.txt": "/static/js/2.2c20888a.chunk.js.LICENSE.txt",
-    "static/media/farmer.bdf7c6de.svg": "/static/media/farmer.bdf7c6de.svg"
+    "main.css": "/porkhack21-webapp/static/css/main.f2b4e3e6.chunk.css",
+    "main.js": "/porkhack21-webapp/static/js/main.906789bb.chunk.js",
+    "main.js.map": "/porkhack21-webapp/static/js/main.906789bb.chunk.js.map",
+    "runtime-main.js": "/porkhack21-webapp/static/js/runtime-main.2595a18a.js",
+    "runtime-main.js.map": "/porkhack21-webapp/static/js/runtime-main.2595a18a.js.map",
+    "static/js/2.968aa6f2.chunk.js": "/porkhack21-webapp/static/js/2.968aa6f2.chunk.js",
+    "static/js/2.968aa6f2.chunk.js.map": "/porkhack21-webapp/static/js/2.968aa6f2.chunk.js.map",
+    "static/js/3.86a546c7.chunk.js": "/porkhack21-webapp/static/js/3.86a546c7.chunk.js",
+    "static/js/3.86a546c7.chunk.js.map": "/porkhack21-webapp/static/js/3.86a546c7.chunk.js.map",
+    "index.html": "/porkhack21-webapp/index.html",
+    "static/css/main.f2b4e3e6.chunk.css.map": "/porkhack21-webapp/static/css/main.f2b4e3e6.chunk.css.map",
+    "static/js/2.968aa6f2.chunk.js.LICENSE.txt": "/porkhack21-webapp/static/js/2.968aa6f2.chunk.js.LICENSE.txt",
+    "static/media/farmer.bdf7c6de.svg": "/porkhack21-webapp/static/media/farmer.bdf7c6de.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.4c90161d.js",
-    "static/js/2.2c20888a.chunk.js",
+    "static/js/runtime-main.2595a18a.js",
+    "static/js/2.968aa6f2.chunk.js",
     "static/css/main.f2b4e3e6.chunk.css",
     "static/js/main.906789bb.chunk.js"
   ]
